@@ -96,9 +96,40 @@
             display: none;
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
         /* Hero Section */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
+            min-height: 100dvh;
             position: relative;
             display: flex;
             align-items: center;
@@ -312,9 +343,45 @@
         }
 
         /* Responsive */
+        @media (max-width: 900px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                height: 100dvh;
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 25px;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+                padding: 20px;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+            }
+
+            .home-button {
+                margin-top: 10px;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 3rem;
+                letter-spacing: 4px;
             }
 
             .hero p {
@@ -329,13 +396,16 @@
                 font-size: 2rem;
             }
 
-            .nav-links {
-                gap: 15px;
-                font-size: 0.9rem;
+            section {
+                padding: 60px 15px;
             }
 
-            .nav-logo {
-                font-size: 1.2rem;
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 300px;
             }
 
             .about-text {
@@ -343,18 +413,102 @@
             }
 
             .cta-section {
-                padding: 60px 20px;
+                padding: 50px 20px;
+                margin-top: 40px;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section p {
+                font-size: 1.1rem;
             }
         }
 
         @media (max-width: 480px) {
-            .nav-links {
-                gap: 10px;
-                font-size: 0.8rem;
+            .hero h1 {
+                font-size: 2.2rem;
+                letter-spacing: 2px;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            section {
+                padding: 40px 10px;
+            }
+
+            .feature-card {
+                padding: 25px;
+            }
+
+            .feature-icon {
+                font-size: 3rem;
+            }
+
+            .feature-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .feature-card p {
+                font-size: 1rem;
+            }
+
+            .about-text {
+                font-size: 1rem;
+            }
+
+            .about-image {
+                height: 250px;
             }
 
             .nav-logo {
                 font-size: 1rem;
+            }
+
+            .cta-section {
+                padding: 40px 15px;
+            }
+
+            .cta-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .cta-section p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+
+            footer {
+                padding: 20px 15px;
+            }
+
+            footer p {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.4rem;
             }
         }
     </style>
@@ -364,6 +518,11 @@
     <nav>
         <div class="nav-container">
             <a href="index.html" class="nav-logo">ЗА ДА НИ ИМА</a>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <ul class="nav-links">
                 <li><a href="kolekcia.html">Колекция</a></li>
                 <li><a href="fts-tsvetnica.html">ФТС Цветница</a></li>
@@ -475,6 +634,20 @@
     </footer>
 
     <script>
+        // Hamburger menu toggle
+        function toggleMenu() {
+            document.querySelector('.hamburger').classList.toggle('active');
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.hamburger').classList.remove('active');
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
