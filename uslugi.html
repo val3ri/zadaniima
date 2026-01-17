@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Услуги - За да ни има</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation Header */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #D62612;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #D62612;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00966E, #D62612);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .home-button {
+            background: linear-gradient(135deg, #00966E, #D62612);
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .home-button:hover {
+            color: white !important;
+            transform: scale(1.05);
+        }
+
+        .home-button::after {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #FFFFFF 0%, #00966E 50%, #D62612 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23FFFFFF" width="1200" height="800"/><circle fill="%2300966E" opacity="0.3" cx="200" cy="400" r="300"/><circle fill="%23D62612" opacity="0.2" cx="1000" cy="300" r="400"/></svg>');
+            background-size: cover;
+            filter: blur(8px);
+            opacity: 0.7;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 6rem;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .hero p {
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-style: italic;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            font-size: 3rem;
+            color: #D62612;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #00966E, #D62612);
+        }
+
+        /* Service Section */
+        .service-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .service-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .service-text h3 {
+            color: #D62612;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .service-text ul {
+            margin-top: 20px;
+            margin-left: 25px;
+        }
+
+        .service-text li {
+            margin-bottom: 12px;
+            color: #555;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(45deg, #00966E, #D62612);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-top: 5px solid #00966E;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .pricing-card h3 {
+            color: #D62612;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            color: #00966E;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .pricing-card ul {
+            text-align: left;
+            margin: 20px 0;
+            list-style: none;
+        }
+
+        .pricing-card li {
+            padding: 8px 0;
+            color: #555;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pricing-card li:before {
+            content: "✓ ";
+            color: #00966E;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #00966E, #D62612);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Contact Info Box */
+        .contact-box {
+            background: linear-gradient(135deg, #00966E, #D62612);
+            color: white;
+            padding: 50px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .contact-box h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+        }
+
+        .contact-box p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .contact-box a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c2c2c;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .service-content {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .nav-logo {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                gap: 10px;
+                font-size: 0.8rem;
+            }
+
+            .nav-logo {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav>
+        <div class="nav-container">
+            <a href="main-page.html" class="nav-logo">ЗА ДА НИ ИМА</a>
+            <ul class="nav-links">
+                <li><a href="kolekcia.html">Колекция</a></li>
+                <li><a href="fts-tsvetnica.html">ФТС Цветница</a></li>
+                <li><a href="ts-pasarelci.html">ТС Пасарелци</a></li>
+                <li><a href="knh-delikanlii.html">КНХ Деликанлии</a></li>
+                <li><a href="uslugi.html">Услуги</a></li>
+                <li><a href="main-page.html" class="home-button">🏠 Начало</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>УСЛУГИ</h1>
+            <p>Направете вашия празник незабравим</p>
+        </div>
+        <div class="scroll-indicator">↓</div>
+    </section>
+
+    <!-- Costume Rental Section -->
+    <section id="naem-kostumi">
+        <h2>Наем на Костюми</h2>
+        <div class="service-content">
+            <div class="service-text">
+                <h3>Автентични Български Народни Носии</h3>
+                <p>
+                    Нашата колекция от традиционни български носии е на ваше разположение за наем. Всеки костюм е автентичен, грижливо поддържан и представлява истинско съкровище на българската традиция.
+                </p>
+                <p style="margin-top: 20px;">
+                    <strong>Перфектни за:</strong>
+                </p>
+                <ul>
+                    <li>Фолклорни фестивали и изпълнения</li>
+                    <li>Сватби в традиционен стил</li>
+                    <li>Фотосесии и видеозаснемания</li>
+                    <li>Театрални постановки</li>
+                    <li>Културни събития и празници</li>
+                    <li>Учебни проекти и представления</li>
+                </ul>
+                <p style="margin-top: 20px;">
+                    Разполагаме с костюми от всички етнографски области на България - Тракия, Шопско, Пиринско, Добруджа, Родопи и други. Всеки костюм включва всички необходими елементи - носия, аксесоари, накити и обувки.
+                </p>
+            </div>
+            <div class="service-image">
+                <p>👗 Богата колекция от автентични български носии</p>
+            </div>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Еднодневен Наем</h3>
+                <div class="price">50 лв</div>
+                <ul>
+                    <li>Пълен комплект носия</li>
+                    <li>Всички аксесоари включени</li>
+                    <li>Професионална консултация</li>
+                    <li>Помощ при облечено</li>
+                </ul>
+                <a href="#contact" class="cta-button">Запитване</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Уикенд Наем</h3>
+                <div class="price">120 лв</div>
+                <ul>
+                    <li>Пълен комплект носия</li>
+                    <li>3 дни (петък-неделя)</li>
+                    <li>Всички аксесоари</li>
+                    <li>Безплатна подмяна при нужда</li>
+                </ul>
+                <a href="#contact" class="cta-button">Запитване</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Седмичен Наем</h3>
+                <div class="price">200 лв</div>
+                <ul>
+                    <li>Пълен комплект носия</li>
+                    <li>7 дни наем</li>
+                    <li>Всички аксесоари</li>
+                    <li>Приоритетен избор</li>
+                </ul>
+                <a href="#contact" class="cta-button">Запитване</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Групов Наем</h3>
+                <div class="price">От 40 лв</div>
+                <ul>
+                    <li>Отстъпка за 5+ костюма</li>
+                    <li>Координирани комплекти</li>
+                    <li>Всички аксесоари</li>
+                    <li>Транспорт при нужда</li>
+                </ul>
+                <a href="#contact" class="cta-button">Запитване</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photography Section -->
+    <section id="fotosesia">
+        <h2>Професионална Фотосесия</h2>
+        <div class="service-content">
+            <div class="service-image">
+                <p>📸 Професионални снимки в традиционни носии</p>
+            </div>
+            <div class="service-text">
+                <h3>Запечатайте Българската Традиция</h3>
+                <p>
+                    Предлагаме професионални фотосесии в автентични български народни носии. Нашите фотографи са специализирани в заснемане на традиционни костюми и знаят как да подчертаят красотата и уникалността на всяка носия.
+                </p>
+                <p style="margin-top: 20px;">
+                    <strong>Какво включва:</strong>
+                </p>
+                <ul>
+                    <li>Професионален фотограф с опит в фолклорна фотография</li>
+                    <li>Избор на носия от нашата колекция</li>
+                    <li>Професионален грим и прическа (по желание)</li>
+                    <li>Избор на локация - студио или на открито</li>
+                    <li>Минимум 50 обработени снимки в дигитален формат</li>
+                    <li>Авторски права върху снимките</li>
+                </ul>
+                <p style="margin-top: 20px;">
+                    Перфектно за семейни снимки, портрети, сватбени фотосесии, детски фотографии или просто за да запазите спомен от българската традиция.
+                </p>
+            </div>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Основен Пакет</h3>
+                <div class="price">250 лв</div>
+                <ul>
+                    <li>1 час фотосесия</li>
+                    <li>1 носия по избор</li>
+                    <li>50+ обработени снимки</li>
+                    <li>Студийна локация</li>
+                </ul>
+                <a href="#contact" class="cta-button">Запитване</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Премиум Пакет</h3>
+                <div class="price">450 лв</div>
+                <ul>
+                    <li>2 часа фотосесия</li>
+                    <li>2 носии по избор</li>
+                    <li>100+ обработени снимки</li>
+                    <li>Локация по избор</li>
+                    <li>Грим и прическа включени</li>
+                </ul>
+                <a href="#contact" class="cta-button">Запитване</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Семеен Пакет</h3>
+                <div class="price">600 лв</div>
+                <ul>
+                    <li>3 часа фотосесия</li>
+                    <li>Носии за цялото семейство</li>
+                    <li>150+ обработени снимки</li>
+                    <li>Локация по избор</li>
+                    <li>Грим и прически включени</li>
+                    <li>Фотоалбум в подарък</li>
+                </ul>
+                <a href="#contact" class="cta-button">Запитване</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Services Section -->
+    <section id="za-prazdnik">
+        <h2>За Вашия Празник</h2>
+        <div class="service-content">
+            <div class="service-text">
+                <h3>Организиране на Традиционни Празници</h3>
+                <p>
+                    Направете вашия празник незабравим с помощта на нашите услуги за организиране на събития в традиционен български стил. Независимо дали е сватба, рожден ден, фирмен празник или културно събитие - ние ще внесем духа на българската традиция.
+                </p>
+                <p style="margin-top: 20px;">
+                    <strong>Какво предлагаме:</strong>
+                </p>
+                <ul>
+                    <li>Фолклорни изпълнения от нашите танцови състави</li>
+                    <li>Народни музиканти на живо</li>
+                    <li>Традиционни български обреди (сватбени, кръщелни и др.)</li>
+                    <li>Костюми за гостите</li>
+                    <li>Обучение на гости в народни танци</li>
+                    <li>Декорация в традиционен стил</li>
+                    <li>Организиране на традиционно хоро</li>
+                    <li>Фолклорен аниматор за детски партита</li>
+                </ul>
+                <p style="margin-top: 20px;">
+                    Нашият опитен екип ще се погрижи всеки детайл да бъде перфектен и да създадем атмосфера, която гостите ви никога няма да забравят.
+                </p>
+            </div>
+            <div class="service-image">
+                <p>🎉 Незабравими празници в традиционен стил</p>
+            </div>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Мини Пакет</h3>
+                <div class="price">400 лв</div>
+                <ul>
+                    <li>30 минути фолклорно изпълнение</li>
+                    <li>Танцов състав (6-8 души)</li>
+                    <li>Традиционни носии</li>
+                    <li>Записана музика</li>
+                </ul>
+                <a href="#contact" class="cta-button">Запитване</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Стандартен Пакет</h3>
+                <div class="price">800 лв</div>
+                <ul>
+                    <li>1 час фолклорна програма</li>
+                    <li>Танцов състав (10-12 души)</li>
+                    <li>Музиканти на живо</li>
+                    <li>Обучение на гости в хоро</li>
+                    <li>Традиционни носии</li>
+                </ul>
+                <a href="#contact" class="cta-button">Запитване</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>VIP Пакет</h3>
+                <div class="price">1500 лв</div>
+                <ul>
+                    <li>2 часа фолклорна програма</li>
+                    <li>Два танцови състава</li>
+                    <li>Музиканти на живо</li>
+                    <li>Обучение и водене на хоро</li>
+                    <li>Традиционен обред</li>
+                    <li>Костюми за гостите</li>
+                    <li>Декорация</li>
+                </ul>
+                <a href="#contact" class="cta-button">Запитване</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Индивидуален</h3>
+                <div class="price">По договаряне</div>
+                <ul>
+                    <li>Напълно персонализиран празник</li>
+                    <li>Всички услуги по ваш избор</li>
+                    <li>Неограничено време</li>
+                    <li>Специални изисквания</li>
+                    <li>Пълна организация</li>
+                </ul>
+                <a href="#contact" class="cta-button">Запитване</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-box">
+            <h3>Свържете се с нас</h3>
+            <p>
+                <strong>📧 Email:</strong> услуги@zadаnimi.bg
+            </p>
+            <p>
+                <strong>📱 Телефон:</strong> +359 888 123 456
+            </p>
+            <p>
+                <strong>📍 Адрес:</strong> ул. "Цар Борис III" 45, София, България
+            </p>
+            <p style="margin-top: 30px;">
+                Работно време: Понеделник - Петък, 10:00 - 18:00<br>
+                Събота: 10:00 - 14:00
+            </p>
+            <p style="margin-top: 20px;">
+                За запитвания и резервации, моля свържете се с нас по телефона или email.<br>
+                Ще се радваме да направим вашия празник незабравим!
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 За да ни има - Услуги</p>
+        <p style="margin-top: 10px; font-size: 0.9rem;">Запазваме традициите, създаваме спомени</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
