@@ -7,6 +7,22 @@
     <link rel="stylesheet" href="css/shared.css">
     <style>
 
+        /* Hero Video Background */
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .scroll-indicator {
+            z-index: 3;
+        }
+
         /* About Section */
         .about-content {
             display: grid;
@@ -287,10 +303,9 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>ЦВЕТНИЦА</h1>
-            <p>Фолклорно танцов състав</p>
-        </div>
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="snimki/optimized_video.mp4" type="video/mp4">
+        </video>
         <div class="scroll-indicator">↓</div>
     </section>
 
