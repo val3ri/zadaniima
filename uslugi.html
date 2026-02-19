@@ -40,10 +40,14 @@
         }
 
         .nav-logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #D62612;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 50px;
+            width: auto;
         }
 
         .nav-links {
@@ -102,7 +106,7 @@
         }
 
         .nav-links .has-dropdown > a::after {
-            content: ' ▼';
+            content: '';
             font-size: 0.7em;
             opacity: 0.6;
         }
@@ -239,8 +243,12 @@
         /* Section Styling */
         section {
             padding: 80px 20px;
+        }
+
+        section > * {
             max-width: 1200px;
-            margin: 0 auto;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         section:nth-child(even) {
@@ -383,6 +391,21 @@
             transform: scale(1.05);
         }
 
+        /* Gallery Section */
+        .galeria-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .galeria-grid img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
         /* Contact Info Box */
         .contact-box {
             background: linear-gradient(135deg, #00966E, #D62612);
@@ -464,7 +487,7 @@
             }
 
             .nav-links .has-dropdown > a::after {
-                content: '▼';
+                content: '';
                 font-size: 0.8em;
                 transition: transform 0.3s;
             }
@@ -594,9 +617,6 @@
                 height: 200px;
             }
 
-            .nav-logo {
-                font-size: 1rem;
-            }
 
             .contact-box {
                 padding: 30px 15px;
@@ -638,7 +658,7 @@
     <!-- Navigation Header -->
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">ЗА ДА НИ ИМА</a>
+            <a href="index.html" class="nav-logo"><img src="snimki/za_da_ni_ima.png" alt="За да ни има"></a>
             <div class="hamburger" onclick="toggleMenu()">
                 <span></span>
                 <span></span>
