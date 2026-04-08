@@ -36,47 +36,10 @@
         }
 
         /* Repertoire Section */
-        .repertoire-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .repertoire-card {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border-left: 4px solid #00966E;
-            transition: transform 0.3s;
-        }
-
-        .repertoire-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
-        }
-
-        .repertoire-card h3 {
-            color: #D62612;
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-        }
-
-        .repertoire-card p {
-            color: #555;
+        #repertoar > p {
+            font-size: 1.1rem;
             line-height: 1.8;
-            margin-bottom: 10px;
-        }
-
-        .repertoire-card ul {
-            margin-top: 10px;
-            margin-left: 20px;
-            color: #555;
-        }
-
-        .repertoire-card li {
-            margin-bottom: 5px;
+            color: #333;
         }
 
         /* Achievements Section */
@@ -84,11 +47,14 @@
             margin-top: 40px;
             border-left: 4px solid #00966E;
             padding-left: 40px;
-            margin-left: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .timeline-item {
-            margin-bottom: 40px;
+            margin-bottom: 0;
+            padding: 8px 0;
             position: relative;
         }
 
@@ -96,7 +62,7 @@
             content: '';
             position: absolute;
             left: -48px;
-            top: 0;
+            top: 22px;
             width: 16px;
             height: 16px;
             background: #D62612;
@@ -108,13 +74,77 @@
             font-size: 1.5rem;
             font-weight: bold;
             color: #D62612;
-            margin-bottom: 10px;
         }
 
         .timeline-text {
             font-size: 1.1rem;
             line-height: 1.8;
             color: #555;
+            display: none;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 0 14px 10px 14px;
+        }
+
+        .timeline-item.open .timeline-text {
+            display: block;
+        }
+
+        .timeline-text ul {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .timeline-item.open .timeline-preview {
+            display: none;
+        }
+
+        .timeline-preview {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .timeline-header {
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .timeline-header .timeline-preview {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            min-width: 0;
+        }
+
+        .timeline-header:hover {
+            background: rgba(0, 150, 110, 0.08);
+        }
+
+        .toggle-btn {
+            font-size: 0.85rem;
+            color: #00966E;
+            font-weight: 600;
+            white-space: nowrap;
+            border: 1.5px solid #00966E;
+            border-radius: 20px;
+            padding: 2px 12px;
+            margin-left: auto;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .timeline-header:hover .toggle-btn {
+            background: #00966E;
+            color: #fff;
         }
 
         /* Gallery Section */
@@ -188,7 +218,8 @@
 
             .achievements-timeline {
                 padding-left: 25px;
-                margin-left: 10px;
+                margin-left: auto;
+                margin-right: auto;
             }
 
             .timeline-item::before {
@@ -300,13 +331,13 @@
         <div class="about-content">
             <div class="about-text">
                 <p>
-                    <strong>ТС Пасарелци</strong> е танцов състав, създаден с мисията да съхрани автентичността на българските народни танци в тяхната най-чиста форма. Нашето име "Пасарелци" идва от старобългарската дума "пасар" - пазач, защитник, което отразява нашата роля като пазители на традициите.
+                    <strong>Танцов състав "Пасарелци"</strong> е създаден на  през 2008 година в с. Пасарел, Софийско. Художествен ръководител е Ангел Низамски. Основната идея на колектива е да се изучават български народни мегдански хора, да се възстановят стари, позабравени обичаи и да се съхрани запазеното фолклорно наследство на селището и областта.
                 </p>
                 <p style="margin-top: 20px;">
-                    Съставът ни се отличава с фокус върху регионалната автентичност - всеки танц се изпълнява точно така, както се е танцувал в родния му край преди столетия. Работим в тясно сътрудничество с етнографи и фолклористи, за да гарантираме, че всяко движение, всяка стъпка и всеки жест са исторически верни.
+                    Името на състава е вдъхновено от село Пасарел – място с живи фолклорни корени и богати обичаи, което символично свързва групата с традицията и българския дух. За пресдставяне на сцена специално, по автентичен образец, са изработени фолклорни носии, характерни за селото, а някои от "пасарелките" използват наследените и грижливо пазени автентични облекла. Репетициите се провеждат с невероятно настроение.
                 </p>
                 <p style="margin-top: 20px;">
-                    Съставът ни се състои от 35 танцьори, които споделят страстта към автентичния български фолклор. Много от нашите членове са потомци на фолклорни музиканти и танцьори, което прави връзката ни с традицията още по-силна и лична.
+                    Първото представяне пред публика е на 3 март 2009 г. Този празник е запомнящ се и остава много специален в историята на групата и селото като едно ново начало. За първи път, след години прекъсване, се заиграват хора от танцьори в традиционните за Пасарел носии. И така се нижат годините до днес.
                 </p>
             </div>
             <div class="about-image">
@@ -318,145 +349,197 @@
     <!-- Repertoire Section -->
     <section id="repertoar">
         <h2>Репертоар</h2>
-        <div class="repertoire-grid">
-            <div class="repertoire-card">
-                <h3>🎭 Автентични хора</h3>
-                <p>Традиционни хора в тяхната оригинална форма:</p>
-                <ul>
-                    <li>Старинно пайдушко</li>
-                    <li>Карахановско хоро</li>
-                    <li>Ситно шопско</li>
-                    <li>Копаничарско хоро</li>
-                    <li>Стара планинска ръченица</li>
-                </ul>
-            </div>
-
-            <div class="repertoire-card">
-                <h3>🌾 Селски обредни танци</h3>
-                <p>Танци свързани с традиционни обреди:</p>
-                <ul>
-                    <li>Ладуванско хоро</li>
-                    <li>Коледарски игри</li>
-                    <li>Лазарски хора</li>
-                    <li>Еньовденски танци</li>
-                    <li>Жътварски хора</li>
-                </ul>
-            </div>
-
-            <div class="repertoire-card">
-                <h3>👰 Сватбарски танци</h3>
-                <p>Традиционни танци от български сватби:</p>
-                <ul>
-                    <li>Невестинско хоро</li>
-                    <li>Кумашко хоро</li>
-                    <li>Танц на кумовете</li>
-                    <li>Сватбарска ръченица</li>
-                    <li>Хоро на младоженците</li>
-                </ul>
-            </div>
-
-            <div class="repertoire-card">
-                <h3>🎪 Мъжки танци</h3>
-                <p>Силни и енергични мъжки хореографии:</p>
-                <ul>
-                    <li>Ръженско хоро</li>
-                    <li>Деветорка</li>
-                    <li>Крадливско хоро</li>
-                    <li>Войнишко хоро</li>
-                    <li>Джигитовка</li>
-                </ul>
-            </div>
-
-            <div class="repertoire-card">
-                <h3>💃 Женски танци</h3>
-                <p>Изящни и грациозни женски хора:</p>
-                <ul>
-                    <li>Пролетно хоро</li>
-                    <li>Девойченска ръченица</li>
-                    <li>Тракийско женско</li>
-                    <li>Панделка</li>
-                    <li>Седенкарско хоро</li>
-                </ul>
-            </div>
-
-            <div class="repertoire-card">
-                <h3>🎵 Народни игри</h3>
-                <p>Игрови и забавни традиционни танци:</p>
-                <ul>
-                    <li>Търновско хоро</li>
-                    <li>Гайдарско хоро</li>
-                    <li>Чепинско хоро</li>
-                    <li>Банско хоро</li>
-                    <li>Елено моме</li>
-                </ul>
-            </div>
-        </div>
+        <p>"Пасарелци" изучават както автентични хора, така и фолклорни обработени композиции, обхващащи всички фолклорни области на България. Освен тях, съставът се грижи да съхрани и предава местните обичаи и обреди, каквито са "Пиперенка" /Топене на пръстените/ и "В понеделник на чешмата". Вторият носи на групата първо място, златен медал и званието "Лауреат" от XIII Наионален събор на народното творчество в Копривщиа през август 2025 г.</p>
     </section>
+
 
     <!-- Achievements Section -->
     <section id="postijenia">
         <h2>Изяви</h2>
         <div class="achievements-timeline">
             <div class="timeline-item">
-                <div class="timeline-year">2025</div>
+                <div class="timeline-header" onclick="toggleYear(this)">
+                    <div class="timeline-year">2026</div>
+                    <div class="timeline-preview">"Празник на премяната", Представяне на обичая "В понеделник на чешмата"...</div>
+                    <span class="toggle-btn">Виж повече ▼</span>
+                </div>
                 <div class="timeline-text">
-                    ТС Пасарелци продължава мисията си като един от водещите автентични фолклорни състави в България, с над 35 активни членове и богат репертоар от регионални танци.
+                    <ul>
+                        <li>"Празник на премяната" организиран от НЧ "Любен Каравелов - 1927" - с. Каменица - гр. Пирдоп и с. Душанци</li>
+                        <li>Представяне на обичая "В понеделник на чешмата" - телевизия "България 24"</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-year">2023</div>
+                <div class="timeline-header" onclick="toggleYear(this)">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-preview">XIII Национален събор - Копривщица, "Празник на премяната", Коледен концерт...</div>
+                    <span class="toggle-btn">Виж повече ▼</span>
+                </div>
                 <div class="timeline-text">
-                    Гранд При на Международния фестивал на автентичния фолклор в Букурещ, Румъния.
+                    <ul>
+                        <li>XIII "Национален събор на народното творчество" - гр. Копривщица</li>
+                        <li>"Празник на премяната" организиран от НЧ "Любен Каравелов - 1927" - с. Каменица</li>
+                        <li>Концерт посветен на деня на християнското семейство НЧ "Виделина" – с. Панчарево</li>
+                        <li>Коледен концерт НЧ "Виделина" – с. Панчарево</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-year">2020</div>
+                <div class="timeline-header" onclick="toggleYear(this)">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-preview">"Празник на премяната", "Пъстреница за Вяра"...</div>
+                    <span class="toggle-btn">Виж повече ▼</span>
+                </div>
                 <div class="timeline-text">
-                    Участие в проекта "Живата традиция" на БНТ - серия предавания за автентичния български фолклор.
+                    <ul>
+                        <li>"Празник на премяната" организиран от НЧ "Любен Каравелов - 1927" - с. Каменица</li>
+                        <li>"Пъстреница за Вяра" Благотворителен концерт - гр. София</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-year">2016</div>
+                <div class="timeline-header" onclick="toggleYear(this)">
+                    <div class="timeline-year">2019</div>
+                    <div class="timeline-preview">Фолклорен фестивал - Блед, Словения, Благотворителен концерт...</div>
+                    <span class="toggle-btn">Виж повече ▼</span>
+                </div>
                 <div class="timeline-text">
-                    Специално признание от Българската академия на науките за принос в опазването на нематериалното културно наследство.
+                    <ul>
+                        <li>Фолклорен танцов фестивал - гр. Блед, Словения</li>
+                        <li>"За бъдеще добро, да се хванем на хоро" Благотворителен концерт - гр. София</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-year">2012</div>
+                <div class="timeline-header" onclick="toggleYear(this)">
+                    <div class="timeline-year">2018</div>
+                    <div class="timeline-preview">Рожден ден на Дойранското езеро - Северна Македония...</div>
+                    <span class="toggle-btn">Виж повече ▼</span>
+                </div>
                 <div class="timeline-text">
-                    Първо място в категория "Автентични фолклорни ансамбли" на фестивала "Розова долина" в Казанлък.
+                    <ul>
+                        <li>Рожден ден на Дойранското езеро - Република Северна Македония</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-year">2008</div>
+                <div class="timeline-header" onclick="toggleYear(this)">
+                    <div class="timeline-year">2017</div>
+                    <div class="timeline-preview">Фолклорен фестивал - Дурас, Албания...</div>
+                    <span class="toggle-btn">Виж повече ▼</span>
+                </div>
                 <div class="timeline-text">
-                    Издаване на документален филм "Пазители на традицията" за етнографската работа на състава.
+                    <ul>
+                        <li>Фолклорен танцов фестивал - гр. Дурас, Албания</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-year">2005</div>
+                <div class="timeline-header" onclick="toggleYear(this)">
+                    <div class="timeline-year">2016</div>
+                    <div class="timeline-preview">Благотворителен концерт, Фолклорен фестивал - Прага...</div>
+                    <span class="toggle-btn">Виж повече ▼</span>
+                </div>
                 <div class="timeline-text">
-                    Златен медал за автентичност на Международния фолклорен фестивал в Охрид, Северна Македония.
+                    <ul>
+                        <li>"Да победим злото с хорото" Благотворителен концерт - гр. София</li>
+                        <li>Фолклорен танцов фестивал - гр. Прага, Чехия</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-year">2000</div>
+                <div class="timeline-header" onclick="toggleYear(this)">
+                    <div class="timeline-year">2015</div>
+                    <div class="timeline-preview">"Любимото ми хорце" - Плевен, Благотворителен концерт, "Пролетно хоро"...</div>
+                    <span class="toggle-btn">Виж повече ▼</span>
+                </div>
                 <div class="timeline-text">
-                    Специална награда за "Най-автентично изпълнение" на Националния фестивал на народното творчество в Копривщица.
+                    <ul>
+                        <li>"Любимото ми хорце" - гр. Плевен</li>
+                        <li>"Да победим злото с хорото" Благотворителен концерт - гр. Sofia</li>
+                        <li>"Пролетно хоро" - гр. Велинград</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-year">1995</div>
+                <div class="timeline-header" onclick="toggleYear(this)">
+                    <div class="timeline-year">2014</div>
+                    <div class="timeline-preview">"Нашенско хоро" - Самоков, "Тъпан бие, хоро се вие" - Казанлък...</div>
+                    <span class="toggle-btn">Виж повече ▼</span>
+                </div>
                 <div class="timeline-text">
-                    Основаване на ТС Пасарелци с фокус върху автентичните български народни танци.
+                    <ul>
+                        <li>"Нашенско хоро" - гр. Самоков</li>
+                        <li>"Тъпан бие, хоро се вие" - гр. Казанлък</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header" onclick="toggleYear(this)">
+                    <div class="timeline-year">2013</div>
+                    <div class="timeline-preview">"Хоро на Панчаревското езеро" - София...</div>
+                    <span class="toggle-btn">Виж повече ▼</span>
+                </div>
+                <div class="timeline-text">
+                    <ul>
+                        <li>"Хоро на Панчаревското езеро" - гр. София</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header" onclick="toggleYear(this)">
+                    <div class="timeline-year">2012</div>
+                    <div class="timeline-preview">Благотворителен концерт, "Русчуклийска среща", "От българско, по-българско"...</div>
+                    <span class="toggle-btn">Виж повече ▼</span>
+                </div>
+                <div class="timeline-text">
+                    <ul>
+                        <li>"Да победим злото с хорото" Благотворителен концерт - гр. София</li>
+                        <li>"Русчуклийска среща" - гр. Русе</li>
+                        <li>"От българско, по-българско" - ТВ СКАТ</li>
+                        <li>"Хоро се вие, извива" - гр. София</li>
+                        <li>"Кулски празници" - гр. Кула</li>
+                        <li>"Тракийска броеница" - гр. Пазарджик</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header" onclick="toggleYear(this)">
+                    <div class="timeline-year">2011</div>
+                    <div class="timeline-preview">"Тъпан бие, хоро се вие", "Дельови празници", "Фолклорен семинар"...</div>
+                    <span class="toggle-btn">Виж повече ▼</span>
+                </div>
+                <div class="timeline-text">
+                    <ul>
+                        <li>"Тъпан бие, хоро се вие" - гр. Казанлък</li>
+                        <li>"Дельови празници" - гр. Златоград</li>
+                        <li>"Фолклорен семинар" - к.к. Паничище</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header" onclick="toggleYear(this)">
+                    <div class="timeline-year">2009</div>
+                    <div class="timeline-preview">Концерт по повод 3 март - с. Долни Пасарел...</div>
+                    <span class="toggle-btn">Виж повече ▼</span>
+                </div>
+                <div class="timeline-text">
+                    <ul>
+                        <li>Концерт по повод Националния празник на Република България - 3 март - с. Долни Пасарел</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -527,6 +610,14 @@
             document.querySelector('.hamburger').classList.remove('active');
             document.querySelector('.nav-links').classList.remove('active');
         });
+
+        // Timeline toggle
+        function toggleYear(headerEl) {
+            const item = headerEl.closest('.timeline-item');
+            item.classList.toggle('open');
+            const btn = headerEl.querySelector('.toggle-btn');
+            btn.textContent = item.classList.contains('open') ? 'Скрий ▲' : 'Виж повече ▼';
+        }
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
