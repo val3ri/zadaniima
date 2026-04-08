@@ -19,31 +19,8 @@
             z-index: 0;
         }
 
-        .hero-poster {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            max-width: none;
-            object-fit: contain;
-            z-index: 0;
-            background: #f5f0e8;
-        }
-
         .scroll-indicator {
             z-index: 3;
-        }
-
-        .hero-content,
-        .scroll-indicator {
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .hero-content.visible,
-        .scroll-indicator.visible {
-            opacity: 1;
         }
 
         /* About Section */
@@ -63,15 +40,14 @@
         .about-image {
             width: 100%;
             height: 400px;
-            background: linear-gradient(45deg, #00966E, #D62612);
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            text-align: center;
-            padding: 20px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         /* Repertoire Section */
@@ -412,7 +388,6 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <img class="hero-poster" src="snimki/tsvetnica/logo_web.jpg" alt="Цветница лого">
         <video class="hero-video" autoplay muted loop playsinline>
             <source src="snimki/optimized_video.mp4" type="video/mp4">
         </video>
@@ -439,7 +414,7 @@
                 </p>
             </div>
             <div class="about-image">
-                <p>📸 Снимка на ФТС Цветница в традиционни носии по време на изпълнение</p>
+                <img src="snimki/tsvetnica/logo_web.jpg" alt="ФТС Цветница лого">
             </div>
         </div>
     </section>
@@ -630,18 +605,6 @@
         document.querySelector('.home-button').addEventListener('click', () => {
             document.querySelector('.hamburger').classList.remove('active');
             document.querySelector('.nav-links').classList.remove('active');
-        });
-
-        // Show hero text only when video loads, hide poster
-        const heroVideo = document.querySelector('.hero-video');
-        const heroPoster = document.querySelector('.hero-poster');
-        const heroContent = document.querySelector('.hero-content');
-        const scrollIndicator = document.querySelector('.scroll-indicator');
-
-        heroVideo.addEventListener('canplay', () => {
-            heroPoster.style.display = 'none';
-            heroContent.classList.add('visible');
-            scrollIndicator.classList.add('visible');
         });
 
         // Timeline toggle
