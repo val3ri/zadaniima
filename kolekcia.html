@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html lang="bg">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Колекция - За да ни има</title>
     <link rel="stylesheet" href="css/shared.css">
     <style>
-
         /* How it started section */
         .story-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
             margin-top: 40px;
         }
 
@@ -36,6 +32,13 @@
         }
 
         /* What it contains section */
+        #kakvo-sadarza > p,
+        #izavi > p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+        }
+
         .collection-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -47,14 +50,14 @@
             background: white;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-top: 4px solid #D62612;
             transition: transform 0.3s;
         }
 
         .collection-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
         }
 
         .collection-card h3 {
@@ -138,19 +141,118 @@
             background: linear-gradient(135deg, #00966E, #D62612);
         }
 
-        /* Gallery Images */
+        /* Gallery Sliders */
         .galeria-grid {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
 
-        .galeria-grid img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        .slider-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+            background: white;
+        }
+
+        .slider-card-title {
+            padding: 14px 16px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #D62612;
+            text-align: center;
+            border-bottom: 2px solid #f0f0f0;
+            text-transform: capitalize;
+        }
+
+        .slider-track-wrapper {
+            position: relative;
+            background: #f5f5f5;
+            overflow: hidden;
+        }
+
+        .slider-track {
+            display: flex;
+        }
+
+        .slider-track img {
+            min-width: 100%;
+            width: 100%;
+            height: 500px;
+            object-fit: contain;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .slider-placeholder {
+            min-width: 100%;
+            width: 100%;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 0.9rem;
+            background: #f0f0f0;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.85);
+            border: none;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            font-size: 1rem;
+            cursor: pointer;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            transition: background 0.2s;
+        }
+
+        .slider-btn:hover {
+            background: white;
+        }
+
+        .slider-btn.prev {
+            left: 8px;
+        }
+
+        .slider-btn.next {
+            right: 8px;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px;
+            background: white;
+        }
+
+        .slider-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .slider-dot.active {
+            background: #D62612;
+        }
+
+        @media (max-width: 768px) {
+            .galeria-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -197,6 +299,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation Header -->
     <nav>
@@ -213,6 +316,7 @@
                     <div class="dropdown-menu">
                         <a href="kolekcia.html#kak-zapochna">Как Започна</a>
                         <a href="kolekcia.html#kakvo-sadarza">Какво Съдържа</a>
+                        <a href="kolekcia.html#izavi">Изяви</a>
                         <a href="kolekcia.html#galeria">Галерия</a>
                     </div>
                 </li>
@@ -270,17 +374,13 @@
         <div class="story-content">
             <div class="story-text">
                 <p>
-                    Колекцията "За да ни има" започва своето съществуване през 1985 година с мечтата да съхрани и предаде на бъдещите поколения богатството на българската народна носия и традиция.
-                </p>
+                    Колекцията от народни носии "За да ни има", на семейство Елка и Ангел Низамски, е частна сбирка от
+                    автентични, възстановени по автентичен образец и сценични български фолклорни облекла. Тя е
+                    дългогодишен труд, вдъхновен от любовта към фолклора ни. </p>
                 <p style="margin-top: 20px;">
-                    Първите костюми са изработени с любов и внимание към детайла от майсторки, които са помнели и запазили автентичните техники на шевиците и бродериите. Всеки костюм разказва история за региона, от който произхожда, и носи в себе си духа на нашите предци.
-                </p>
-                <p style="margin-top: 20px;">
-                    С годините колекцията се разраства и днес наброява стотици уникални костюми, всеки от които е ценно свидетелство за културното ни наследство. От Пиринско до Добруджа, от Тракия до Шопско - всеки регион е представен с автентични носии.
-                </p>
-            </div>
-            <div class="story-image">
-                <p>📸 Снимка на първите костюми от колекцията</p>
+                    Съществуването ѝ започва през 1983 година, когато Ангел наследява и запазва сватбените дрехи на
+                    своите баба и дядо. По-късно, когато с Елка стават семейство, към сбирката се прибавя бръчника на
+                    нейната баба, облеклото и кaвалa на дядо ѝ. </p>
             </div>
         </div>
     </section>
@@ -288,85 +388,119 @@
     <!-- What it contains Section -->
     <section id="kakvo-sadarza">
         <h2>Какво Съдържа</h2>
-        <div class="collection-grid">
-            <div class="collection-card">
-                <h3>🎭 Регионални Носии</h3>
-                <p>Автентични костюми от всички етнографски области на България:</p>
-                <ul>
-                    <li>Тракийски носии</li>
-                    <li>Шопски костюми</li>
-                    <li>Пирински облекла</li>
-                    <li>Добруджански традиции</li>
-                    <li>Родопски автентични носии</li>
-                </ul>
-            </div>
+        <p>През годините колекцията се разраства и днес наброява стотици уникални костюми, всеки от които е ценно свидетелство за културното ни наследство. При събирането на образците внимателно се проучва автентичността, възрастта и характерните им регионални особености.</p>
+        <p style="margin-top: 20px;">Автентичните български мъжки национални облекла се намират най-трудно и са истинска находка. Голяма ценност са старинните булчински облекла и голямата сбирка от престилки, наброяваща около 350 образци. Част от облеклата са на възраст повече от век, а някои достигат до 130–160 години.</p>
+    </section>
 
-            <div class="collection-card">
-                <h3>👗 Женски Костюми</h3>
-                <p>Богата колекция от женски носии с:</p>
-                <ul>
-                    <li>Ръчно тъкани престилки</li>
-                    <li>Традиционни бродерии</li>
-                    <li>Автентични сукмани</li>
-                    <li>Поясове и накити</li>
-                    <li>Главни украси</li>
-                </ul>
-            </div>
-
-            <div class="collection-card">
-                <h3>👔 Мъжки Костюми</h3>
-                <p>Традиционни мъжки облекла включващи:</p>
-                <ul>
-                    <li>Бели и черни гайтани</li>
-                    <li>Калпаци и шапки</li>
-                    <li>Традиционни сукмани</li>
-                    <li>Пояси и презрамки</li>
-                    <li>Обувки - цървули и опинци</li>
-                </ul>
-            </div>
-
-            <div class="collection-card">
-                <h3>👶 Детски Носии</h3>
-                <p>Специално изработени костюми за деца:</p>
-                <ul>
-                    <li>Малки размери за всички възрасти</li>
-                    <li>Автентични детски облекла</li>
-                    <li>Празнични носии</li>
-                    <li>Ежедневни традиционни дрехи</li>
-                </ul>
-            </div>
-
-            <div class="collection-card">
-                <h3>💍 Аксесоари</h3>
-                <p>Допълнителни елементи към костюмите:</p>
-                <ul>
-                    <li>Традиционни накити</li>
-                    <li>Пояси и колани</li>
-                    <li>Главни украси - венци</li>
-                    <li>Шамии и забрадки</li>
-                    <li>Чанти и торби</li>
-                </ul>
-            </div>
-
-            <div class="collection-card">
-                <h3>🎪 Сценични Костюми</h3>
-                <p>Специални носии за изпълнения:</p>
-                <ul>
-                    <li>Усилени материи за сцена</li>
-                    <li>Ярки цветове за визия</li>
-                    <li>Модерни интерпретации</li>
-                    <li>Удобни за танци</li>
-                </ul>
-            </div>
-        </div>
+    <!-- Izavi Section -->
+    <section id="izavi">
+        <h2>Изяви</h2>
+        <p>От създаването си до днес Колекцията съдейства за облеклата на филмови продукции, певци и артисти. През годините участва в множество събития, дефилета, празници и културен обмен както в страната, така и в чужбина.</p>
+        <p style="margin-top: 20px;">Запомнящо събитие в историята на Колекцията е дефилето на възстановения след дълго прекъсване Роженски събор през 2015г.</p>
+        <p style="margin-top: 20px;">Друго значимо събитие е показването на част от експонатите на Колекцията на националния празник на Китайската народна република в гр. Пекин през 2017г.</p>
+        <p style="margin-top: 20px;">В момента Колекцията "За да ни има" заема централна роля в културния проект "Празник на премяната", който е разработен съвместно със "НЧ Любен Каравелов -1927" с. Каменица и неговия Председател - Петя Чолакова.</p>
     </section>
 
     <!-- Gallery Section -->
     <section id="galeria">
         <h2>Галерия</h2>
         <div class="galeria-grid">
-            <img src="snimki/vidinska.png" alt="Видинска носия">
-            <img src="snimki/litak.png" alt="Литак">
+
+            <div class="slider-card" data-slider>
+                <div class="slider-card-title">Северняшка фолклорна област</div>
+                <div class="slider-track-wrapper">
+                    <button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
+                    <div class="slider-track">
+                        <img src="snimki/kolekcia/северняшка-фолклорна-област/1.png" alt="Северняшка носия 1">
+                        <img src="snimki/kolekcia/северняшка-фолклорна-област/2.png" alt="Северняшка носия 2">
+                        <img src="snimki/kolekcia/северняшка-фолклорна-област/3.png" alt="Северняшка носия 3">
+                        <img src="snimki/kolekcia/северняшка-фолклорна-област/10.png" alt="Северняшка носия 4">
+                        <img src="snimki/kolekcia/северняшка-фолклорна-област/11.png" alt="Северняшка носия 5">
+                        <img src="snimki/kolekcia/северняшка-фолклорна-област/12.png" alt="Северняшка носия 6">
+                        <img src="snimki/kolekcia/северняшка-фолклорна-област/13.png" alt="Северняшка носия 7">
+                        <img src="snimki/kolekcia/северняшка-фолклорна-област/17.png" alt="Северняшка носия 8">
+                        <img src="snimki/kolekcia/северняшка-фолклорна-област/20.png" alt="Северняшка носия 9">
+                        <img src="snimki/kolekcia/северняшка-фолклорна-област/26.png" alt="Северняшка носия 10">
+                    </div>
+                    <button class="slider-btn next" onclick="slide(this,1)">&#8250;</button>
+                </div>
+                <div class="slider-dots"></div>
+            </div>
+
+            <div class="slider-card" data-slider>
+                <div class="slider-card-title">Добруджанска фолклорна област</div>
+                <div class="slider-track-wrapper">
+                    <button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
+                    <div class="slider-track">
+                        <img src="snimki/kolekcia/добруджанска-фолклорна-област/29.png" alt="Добруджанска носия 1">
+                    </div>
+                    <button class="slider-btn next" onclick="slide(this,1)">&#8250;</button>
+                </div>
+                <div class="slider-dots"></div>
+            </div>
+
+            <div class="slider-card" data-slider>
+                <div class="slider-card-title">Тракийска фолклорна област</div>
+                <div class="slider-track-wrapper">
+                    <button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
+                    <div class="slider-track">
+                        <img src="snimki/kolekcia/тракийска-фолклорна-област/5.png" alt="Тракийска носия 1">
+                        <img src="snimki/kolekcia/тракийска-фолклорна-област/6.png" alt="Тракийска носия 2">
+                        <img src="snimki/kolekcia/тракийска-фолклорна-област/16.png" alt="Тракийска носия 3">
+                        <img src="snimki/kolekcia/тракийска-фолклорна-област/21.png" alt="Тракийска носия 4">
+                        <img src="snimki/kolekcia/тракийска-фолклорна-област/22.png" alt="Тракийска носия 5">
+                        <img src="snimki/kolekcia/тракийска-фолклорна-област/25.png" alt="Тракийска носия 6">
+                    </div>
+                    <button class="slider-btn next" onclick="slide(this,1)">&#8250;</button>
+                </div>
+                <div class="slider-dots"></div>
+            </div>
+
+            <div class="slider-card" data-slider>
+                <div class="slider-card-title">Родопска фолклорна област</div>
+                <div class="slider-track-wrapper">
+                    <button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
+                    <div class="slider-track">
+                        <img src="snimki/kolekcia/родопска-фолклорна-област/9.png" alt="Родопска носия 1">
+                    </div>
+                    <button class="slider-btn next" onclick="slide(this,1)">&#8250;</button>
+                </div>
+                <div class="slider-dots"></div>
+            </div>
+
+            <div class="slider-card" data-slider>
+                <div class="slider-card-title">Пиринска фолклорна област</div>
+                <div class="slider-track-wrapper">
+                    <button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
+                    <div class="slider-track">
+                        <img src="snimki/kolekcia/пиринска-фолклорна-област/7.png" alt="Пиринска носия 1">
+                        <img src="snimki/kolekcia/пиринска-фолклорна-област/14.png" alt="Пиринска носия 2">
+                        <img src="snimki/kolekcia/пиринска-фолклорна-област/15.png" alt="Пиринска носия 3">
+                        <img src="snimki/kolekcia/пиринска-фолклорна-област/18.png" alt="Пиринска носия 4">
+                        <img src="snimki/kolekcia/пиринска-фолклорна-област/23.png" alt="Пиринска носия 5">
+                    </div>
+                    <button class="slider-btn next" onclick="slide(this,1)">&#8250;</button>
+                </div>
+                <div class="slider-dots"></div>
+            </div>
+
+            <div class="slider-card" data-slider>
+                <div class="slider-card-title">Шопска фолклорна област</div>
+                <div class="slider-track-wrapper">
+                    <button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
+                    <div class="slider-track">
+                        <img src="snimki/kolekcia/шопска-фолклорна-област/4.png" alt="Шопска носия 1">
+                        <img src="snimki/kolekcia/шопска-фолклорна-област/8.png" alt="Шопска носия 2">
+                        <img src="snimki/kolekcia/шопска-фолклорна-област/19.png" alt="Шопска носия 3">
+                        <img src="snimki/kolekcia/шопска-фолклорна-област/24.png" alt="Шопска носия 4">
+                        <img src="snimki/kolekcia/шопска-фолклорна-област/27.png" alt="Шопска носия 5">
+                        <img src="snimki/kolekcia/шопска-фолклорна-област/28.png" alt="Шопска носия 6">
+                    </div>
+                    <button class="slider-btn next" onclick="slide(this,1)">&#8250;</button>
+                </div>
+                <div class="slider-dots"></div>
+            </div>
+
         </div>
     </section>
 
@@ -414,6 +548,42 @@
             document.querySelector('.nav-links').classList.remove('active');
         });
 
+        // Gallery sliders
+        document.querySelectorAll('.slider-card').forEach(card => {
+            const track = card.querySelector('.slider-track');
+            const dotsContainer = card.querySelector('.slider-dots');
+            const items = track.children;
+            card._current = 0;
+
+            // Build dots
+            Array.from(items).forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+                dot.addEventListener('click', () => goTo(i));
+                dotsContainer.appendChild(dot);
+            });
+
+            function goTo(index) {
+                card._current = (index + items.length) % items.length;
+                track.style.transition = 'transform 0.4s ease';
+                track.style.transform = `translateX(-${card._current * 100}%)`;
+                dotsContainer.querySelectorAll('.slider-dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === card._current);
+                });
+            }
+
+            card._goTo = goTo;
+            if (items.length <= 1) {
+                card.querySelectorAll('.slider-btn').forEach(b => b.style.display = 'none');
+            }
+        });
+
+        function slide(btn, dir) {
+            const card = btn.closest('.slider-card');
+            const total = card.querySelector('.slider-track').children.length;
+            card._goTo((card._current + dir + total) % total);
+        }
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -431,4 +601,5 @@
         });
     </script>
 </body>
+
 </html>
