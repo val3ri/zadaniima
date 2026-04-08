@@ -21,3 +21,12 @@ ehthumbs.db
 
 # OS temp files
 Desktop.ini
+
+# claude files and folders
+CLAUDE.md
+.claude/
+.playwright-mcp/
+
+# other files
+downloads/
+balkara/

@@ -19,8 +19,31 @@
             z-index: 0;
         }
 
+        .hero-poster {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            object-fit: contain;
+            z-index: 0;
+            background: #f5f0e8;
+        }
+
         .scroll-indicator {
             z-index: 3;
+        }
+
+        .hero-content,
+        .scroll-indicator {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .hero-content.visible,
+        .scroll-indicator.visible {
+            opacity: 1;
         }
 
         /* About Section */
@@ -52,6 +75,16 @@
         }
 
         /* Repertoire Section */
+        #repertoar > p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        #repertoar > p + p {
+            margin-top: 20px;
+        }
+
         .repertoire-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -100,7 +133,9 @@
             margin-top: 40px;
             border-left: 4px solid #00966E;
             padding-left: 40px;
-            margin-left: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .timeline-item {
@@ -112,7 +147,7 @@
             content: '';
             position: absolute;
             left: -48px;
-            top: 0;
+            top: 22px;
             width: 16px;
             height: 16px;
             background: #D62612;
@@ -185,6 +220,80 @@
             background: linear-gradient(135deg, #FFFFFF, #00966E);
         }
 
+        /* Timeline accordion */
+        .timeline-preview {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .timeline-text {
+            display: none;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 0 14px 10px 14px;
+        }
+
+        .timeline-text ul {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .timeline-item.open .timeline-text {
+            display: block;
+        }
+
+        .timeline-item.open .timeline-preview {
+            display: none;
+        }
+
+        .timeline-item {
+            margin-bottom: 0;
+            padding: 8px 0;
+        }
+
+        .timeline-header {
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .timeline-header .timeline-preview {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            min-width: 0;
+        }
+
+        .timeline-header:hover {
+            background: rgba(0, 150, 110, 0.08);
+        }
+
+        .toggle-btn {
+            font-size: 0.85rem;
+            color: #00966E;
+            font-weight: 600;
+            white-space: nowrap;
+            border: 1.5px solid #00966E;
+            border-radius: 20px;
+            padding: 2px 12px;
+            margin-left: auto;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .timeline-header:hover .toggle-btn {
+            background: #00966E;
+            color: #fff;
+        }
+
         @media (max-width: 768px) {
             .about-content {
                 grid-template-columns: 1fr;
@@ -247,7 +356,7 @@
     <!-- Navigation Header -->
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="nav-logo"><img src="snimki/za_da_ni_ima.png" alt="За да ни има"></a>
+            <a href="index.html" class="nav-logo">За да ни има</a>
             <div class="hamburger" onclick="toggleMenu()">
                 <span></span>
                 <span></span>
@@ -265,25 +374,25 @@
                 <li class="has-dropdown" onclick="toggleDropdownMenu(this, event)">
                     <a href="fts-tsvetnica.html">ФТС Цветница</a>
                     <div class="dropdown-menu">
-                        <a href="fts-tsvetnica.html#koi-sme-nie">Кои Сме Ние</a>
+                        <a href="fts-tsvetnica.html#koi-sme-nie">Представяне</a>
                         <a href="fts-tsvetnica.html#repertoar">Репертоар</a>
-                        <a href="fts-tsvetnica.html#postijenia">Постижения</a>
+                        <a href="fts-tsvetnica.html#postijenia">Изяви</a>
                         <a href="fts-tsvetnica.html#galeria">Галерия</a>
                     </div>
                 </li>
                 <li class="has-dropdown" onclick="toggleDropdownMenu(this, event)">
                     <a href="ts-pasarelci.html">ТС Пасарелци</a>
                     <div class="dropdown-menu">
-                        <a href="ts-pasarelci.html#koi-sme-nie">Кои Сме Ние</a>
+                        <a href="ts-pasarelci.html#koi-sme-nie">Представяне</a>
                         <a href="ts-pasarelci.html#repertoar">Репертоар</a>
-                        <a href="ts-pasarelci.html#postijenia">Постижения</a>
+                        <a href="ts-pasarelci.html#postijenia">Изяви</a>
                         <a href="ts-pasarelci.html#galeria">Галерия</a>
                     </div>
                 </li>
                 <li class="has-dropdown" onclick="toggleDropdownMenu(this, event)">
                     <a href="knh-delikanlii.html">КНХ Деликанлии</a>
                     <div class="dropdown-menu">
-                        <a href="knh-delikanlii.html#koi-sme-nie">Кои Сме Ние</a>
+                        <a href="knh-delikanlii.html#koi-sme-nie">Представяне</a>
                         <a href="knh-delikanlii.html#kakvo-predlagame">Какво Предлагаме</a>
                     </div>
                 </li>
@@ -303,6 +412,7 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <img class="hero-poster" src="snimki/tsvetnica/logo_web.jpg" alt="Цветница лого">
         <video class="hero-video" autoplay muted loop playsinline>
             <source src="snimki/optimized_video.mp4" type="video/mp4">
         </video>
@@ -315,17 +425,17 @@
 
     <!-- About Section -->
     <section id="koi-sme-nie">
-        <h2>Кои Сме Ние</h2>
+        <h2>Представяне</h2>
         <div class="about-content">
             <div class="about-text">
                 <p>
-                    <strong>ФТС Цветница</strong> е фолклорен танцов състав, посветен на съхраняването и промотирането на богатото наследство на българските народни танци. Нашата група обединява страстни танцьори от всички възрасти, които споделят любовта към традиционната българска култура.
+                    <strong>Танцов състав “Цветница”</strong>, с художествен ръководител Йоанна Низамска, е създаден от група приятели през лятото на 2023г. Поводът е танцова изненада за сватбеното тържество на близък човек. Това поставя началото на нещо дълго обсъждано, отлагано във времето, но силно желано.
                 </p>
                 <p style="margin-top: 20px;">
-                    Чрез автентични хореографии, традиционни носии и енергични изпълнения, ние внасяме живот в вековни танци като хоро, ръченица, тракийско хоро и много други. Нашата мисия е да запазим тези традиции за бъдещите поколения и да споделим красотата на българския фолклор със света.
+                    Основната цел на колектива е да представя българския фолклор в неговия обработен вид. С хореографирани движения и танцова постановка, подходящи за сцена, се показва богатството на различните фолклорни области на България.
                 </p>
                 <p style="margin-top: 20px;">
-                    Състоят се над 50 активни членове, които редовно тренират и изнасят представления както в България, така и в чужбина. Нашият ансамбъл е познат с високата си техника, безупречната синхронизация и автентичността на изпълненията.
+                    Като част от Сдружението “За да ни има”, танцьорите имат честта и удоволствието в изявите си да бъдат облечени изцяло в носии от Колекцията "За да ни има".
                 </p>
             </div>
             <div class="about-image">
@@ -337,139 +447,120 @@
     <!-- Repertoire Section -->
     <section id="repertoar">
         <h2>Репертоар</h2>
+
+        <p>Репертоарът включва танци от Шопската, Добруджанската и Тракийската фолклорни области. В момента се работи по поставянето на нов танц от Северняшката фолклорна област.</p>
+        <p>Освен сценични танци, в програмата е включена специално разработена постановка, наречена “Картини от България”. Тя съчетава в себе си представяне на традиционни носии от всяка една фолклорна област и характерните за нея танцови стъпки. Създадена е за представянето на колектива в “Culture and Arts Carnival” - Пекин, Китайска народна република.</p>
+
         <div class="repertoire-grid">
             <div class="repertoire-card">
-                <h3>🌿 Тракийски танци</h3>
-                <p>Енергични и динамични танци от Тракийската област:</p>
+                <h3>"Шопското"</h3>
                 <ul>
-                    <li>Тракийско хоро</li>
-                    <li>Пайдушко хоро</li>
-                    <li>Капанско хоро</li>
-                    <li>Бързи ръченици</li>
+                    <li>Хореография: Йоанна Низамска</li>
+                    <li>Музика: Борислав Гълъбов</li>
+                    <li>Вокали: Дияна Василева</li>
                 </ul>
             </div>
 
             <div class="repertoire-card">
-                <h3>🏔️ Шопски танци</h3>
-                <p>Бързи и весели танци от Шопската област:</p>
+                <h3>Кюстендилска ръченица</h3>
                 <ul>
-                    <li>Шопско хоро</li>
-                    <li>Граовско хоро</li>
-                    <li>Кюстендилска ръченица</li>
-                    <li>Еленино хоро</li>
+                    <li>Хореография: Йоанна Низамска</li>
+                    <li>Музика: Балканфолк</li>
                 </ul>
             </div>
 
             <div class="repertoire-card">
-                <h3>⛰️ Пирински танци</h3>
-                <p>Традиционни танци от Пиринския край:</p>
+                <h3>"Варненски танц"</h3>
                 <ul>
-                    <li>Петрунино хоро</li>
-                    <li>Мелнишко хоро</li>
-                    <li>Разложка ръченица</li>
-                    <li>Гайдарско хоро</li>
+                    <li>Хореография: Йоанна Низамска</li>
+                    <li>Музика: Оркесър "Хоро"</li>
                 </ul>
             </div>
 
             <div class="repertoire-card">
-                <h3>🌾 Добруджански танци</h3>
-                <p>Характерни танци от Добруджанската област:</p>
+                <h3>"Джиновски танц"</h3>
                 <ul>
-                    <li>Добруджанско хоро</li>
-                    <li>Кадънка</li>
-                    <li>Право хоро</li>
-                    <li>Ситно хоро</li>
+                    <li>Хореография: Райна Тодорова</li>
+                    <li>Музика: Йордан Драганов</li>
                 </ul>
             </div>
 
             <div class="repertoire-card">
-                <h3>🎭 Родопски танци</h3>
-                <p>Мелодични танци от Родопите:</p>
+                <h3>"Тракийски копаници"</h3>
                 <ul>
-                    <li>Родопска ръченица</li>
-                    <li>Брайнско хоро</li>
-                    <li>Пловдивско хоро</li>
-                    <li>Тича хоро</li>
+                    <li>Хореография: Йоанна Низамска </li>
+                    <li>Музика: Борислав Гълъбов</li>
                 </ul>
             </div>
 
-            <div class="repertoire-card">
-                <h3>💃 Женски танци</h3>
-                <p>Специални хореографии само за жени:</p>
-                <ul>
-                    <li>Гергьовденско хоро</li>
-                    <li>Седянка</li>
-                    <li>Девойченско хоро</li>
-                    <li>Лазарски игри</li>
-                </ul>
-            </div>
         </div>
     </section>
 
     <!-- Achievements Section -->
     <section id="postijenia">
-        <h2>Постижения</h2>
+        <h2>Изяви</h2>
         <div class="achievements-timeline">
             <div class="timeline-item">
-                <div class="timeline-year">1985</div>
-                <div class="timeline-text">
-                    Основаване на ФТС Цветница. Първото изпълнение е организирано в местния културен дом с всички 12 основателя.
+                <div class="timeline-header" onclick="toggleYear(this)">
+                    <div class="timeline-year">2026</div>
+                    <div class="timeline-preview">Благотворителен концерт, "Празник на премяната", Фестивал "Любов и вино"...</div>
+                    <span class="toggle-btn">Виж повече ▼</span>
                 </div>
-            </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-year">1992</div>
                 <div class="timeline-text">
-                    Печелим първата си национална награда на фестивала "Пирин пее" - Първо място в категория "Автентични танци".
-                </div>
-            </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-year">1998</div>
-                <div class="timeline-text">
-                    Златен медал на Международния фолклорен фестивал в Белград, Сърбия.
-                </div>
-            </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-year">2005</div>
-                <div class="timeline-text">
-                    Първо международно турне в Гърция, Сърбия и Румъния. Успешни изпълнения пред над 5000 зрители.
+                    <ul>
+                        <li>Благотворителен концерт - с. Долни Пасарел</li>
+                        <li>"Празник на премяната" организиран от НЧ "Любен Каравелов - 1927" - гр. Пирдоп</li>
+                        <li>Фестивал "Любов и вино" с участието на Соня Чакърова и Димитър Аргиров - "Дует от сърце" - гр. Несебър</li>
+                        <li>"Пъстреница" - Концерт по случай 15 години КНТ "Хороводец" - гр. София</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-year">2010</div>
-                <div class="timeline-text">
-                    Специална награда за принос в опазването на българския фолклор от Министерството на културата.
+                <div class="timeline-header" onclick="toggleYear(this)">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-preview">Тодоровден, Събор на село Кривина, Посрещане на национални шампиони...</div>
+                    <span class="toggle-btn">Виж повече ▼</span>
                 </div>
-            </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-year">2015</div>
                 <div class="timeline-text">
-                    Празнуваме 30 години с грандиозен юбилеен концерт. Издаване на документален филм за историята на ансамбъла.
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-year">2018</div>
-                <div class="timeline-text">
-                    Първо място на Световния фестивал на фолклора в Истанбул, Турция.
+                    <ul>
+                        <li>Празник по случай Тодоровден - Конна база „Спарата", с. Селянин</li>
+                        <li>"Празник на премяната" организиран от НЧ "Любен Каравелов - 1927" - с. Каменица</li>
+                        <li>"Традиционен събор на село Кривина" - с. Кривина</li>
+                        <li>Hivatalално посрещане на Александра Георгиева, състезател по кикбокс - Летище "Васил Левски" гр. София</li>
+                        <li>"Традиционен събор на село Панчарево" - с. Панчарево</li>
+                        <li>Официално посрещане на Българския национален отбор по кикбокс - Летище "Васил Левски" гр. София</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-year">2022</div>
+                <div class="timeline-header" onclick="toggleYear(this)">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-preview">Китайска нова година, Festival "Costa Brava" (Испания), Фестивал на драконовите лодки...</div>
+                    <span class="toggle-btn">Виж повече ▼</span>
+                </div>
                 <div class="timeline-text">
-                    Участие в телевизионното предаване "България търси талант" - достигане до полуфинала.
+                    <ul>
+                        <li>Празничен концерт по случай Китайската нова година организиран от посолството на Китайската народна република - гр. София</li>
+                        <li>Празник по случай Тодоровден - Конна база „Спарата", с. Селянин</li>
+                        <li>Концерт по случай 95 години НЧ "Просвета - 1929" - с. Долни Пасарел</li>
+                        <li>"Празник на премяната" организиран от НЧ "Любен Каравелов - 1927" - с. Каменица</li>
+                        <li>Фестивал на драконовите лодки - яз. Панчарево, гр. София</li>
+                        <li>XII International Folklore Festival "Costa Brava" - гр. Лорет де мар, Испания</li>
+                        <li>Празничен концерт по случай 190 години от рождението на Любен Каравелов и 97 години от основаването на НЧ "Любен Каравелов - 1927" - с. Каменица</li>
+                    </ul>
                 </div>
             </div>
-            
+
             <div class="timeline-item">
-                <div class="timeline-year">2025</div>
+                <div class="timeline-header" onclick="toggleYear(this)">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-preview">"Culture and Arts Carnival" - Пекин, Китай</div>
+                    <span class="toggle-btn">Виж повече ▼</span>
+                </div>
                 <div class="timeline-text">
-                    Днес ФТС Цветница е дом на над 50 активни членове и продължава да вдъхновява нови поколения да открият красотата на българските народни танци.
+                    "Culture and Arts Carnival" - гр. Пекин, Китайска народна република.
                 </div>
             </div>
         </div>
@@ -540,6 +631,26 @@
             document.querySelector('.hamburger').classList.remove('active');
             document.querySelector('.nav-links').classList.remove('active');
         });
+
+        // Show hero text only when video loads, hide poster
+        const heroVideo = document.querySelector('.hero-video');
+        const heroPoster = document.querySelector('.hero-poster');
+        const heroContent = document.querySelector('.hero-content');
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+
+        heroVideo.addEventListener('canplay', () => {
+            heroPoster.style.display = 'none';
+            heroContent.classList.add('visible');
+            scrollIndicator.classList.add('visible');
+        });
+
+        // Timeline toggle
+        function toggleYear(headerEl) {
+            const item = headerEl.closest('.timeline-item');
+            item.classList.toggle('open');
+            const btn = headerEl.querySelector('.toggle-btn');
+            btn.textContent = item.classList.contains('open') ? 'Скрий ▲' : 'Виж повече ▼';
+        }
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
