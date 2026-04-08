@@ -76,7 +76,7 @@ nav {
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #00966E, #D62612);
+    background: linear-gradient(90deg, #007A58, #D62612);
     transition: width 0.3s;
 }
 
@@ -85,7 +85,7 @@ nav {
 }
 
 .home-button {
-    background: linear-gradient(135deg, #00966E, #D62612);
+    background: linear-gradient(135deg, #007A58, #D62612);
     color: white !important;
     padding: 8px 20px;
     border-radius: 20px;
@@ -187,7 +187,7 @@ nav {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: linear-gradient(135deg, #FFFFFF 0%, #00966E 50%, #D62612 100%);
+    background: linear-gradient(135deg, #FFFFFF 0%, #007A58 50%, #D62612 100%);
 }
 
 .hero::before {
@@ -197,7 +197,7 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23FFFFFF" width="1200" height="800"/><circle fill="%2300966E" opacity="0.3" cx="200" cy="400" r="300"/><circle fill="%23D62612" opacity="0.2" cx="1000" cy="300" r="400"/></svg>');
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23FFFFFF" width="1200" height="800"/><circle fill="%23007A58" opacity="0.3" cx="200" cy="400" r="300"/><circle fill="%23D62612" opacity="0.2" cx="1000" cy="300" r="400"/></svg>');
     background-size: cover;
     filter: blur(8px);
     opacity: 0.7;
@@ -273,7 +273,7 @@ h2::after {
     transform: translateX(-50%);
     width: 100px;
     height: 4px;
-    background: linear-gradient(90deg, #00966E, #D62612);
+    background: linear-gradient(90deg, #007A58, #D62612);
 }
 
 /* Footer */
