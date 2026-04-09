@@ -145,55 +145,91 @@
         }
 
         /* Gallery Section */
-        .gallery-grid {
+        .galeria-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             margin-top: 40px;
         }
 
-        .gallery-item {
-            height: 250px;
-            border-radius: 10px;
+        .slider-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+            background: white;
+        }
+
+        .slider-card-title {
+            padding: 14px 16px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #D62612;
+            text-align: center;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .slider-track-wrapper {
+            position: relative;
+            background: #f5f5f5;
+            overflow: hidden;
+        }
+
+        .slider-track {
+            display: flex;
+        }
+
+        .slider-track img {
+            min-width: 100%;
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.85);
+            border: none;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            font-size: 1rem;
+            cursor: pointer;
+            z-index: 2;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            transition: background 0.2s;
+        }
+
+        .slider-btn:hover { background: white; }
+        .slider-btn.prev { left: 8px; }
+        .slider-btn.next { right: 8px; }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px;
+            background: white;
+        }
+
+        .slider-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ccc;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: background 0.2s;
         }
 
-        .gallery-item:hover {
-            transform: scale(1.05);
-        }
+        .slider-dot.active { background: #D62612; }
 
-        .gallery-item:nth-child(1) {
-            background: linear-gradient(135deg, #D62612, #007A58);
-        }
-
-        .gallery-item:nth-child(2) {
-            background: linear-gradient(135deg, #007A58, #FFFFFF);
-        }
-
-        .gallery-item:nth-child(3) {
-            background: linear-gradient(135deg, #FFFFFF, #D62612);
-        }
-
-        .gallery-item:nth-child(4) {
-            background: linear-gradient(135deg, #D62612, #FFFFFF);
-        }
-
-        .gallery-item:nth-child(5) {
-            background: linear-gradient(135deg, #007A58, #D62612);
-        }
-
-        .gallery-item:nth-child(6) {
-            background: linear-gradient(135deg, #FFFFFF, #007A58);
+        @media (max-width: 768px) {
+            .galeria-grid { grid-template-columns: 1fr; }
         }
 
         /* Timeline accordion */
@@ -538,25 +574,69 @@
     <!-- Gallery Section -->
     <section id="galeria">
         <h2>Галерия</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <p>🎭 Изпълнение на Тракийско хоро</p>
+        <div class="galeria-grid">
+
+            <div class="slider-card" data-slider>
+                <div class="slider-card-title">Изяви</div>
+                <div class="slider-track-wrapper">
+                    <button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
+                    <div class="slider-track">
+                        <img src="snimki/tsvetnica/изяви/1.jpeg" alt="Изява 1">
+                        <img src="snimki/tsvetnica/изяви/2.jpeg" alt="Изява 2">
+                        <img src="snimki/tsvetnica/изяви/4.JPG" alt="Изява 3">
+                        <img src="snimki/tsvetnica/изяви/5.JPG" alt="Изява 4">
+                        <img src="snimki/tsvetnica/изяви/6.JPG" alt="Изява 5">
+                        <img src="snimki/tsvetnica/изяви/7.JPEG" alt="Изява 6">
+                        <img src="snimki/tsvetnica/изяви/9.JPG" alt="Изява 7">
+                        <img src="snimki/tsvetnica/изяви/10.JPG" alt="Изява 8">
+                        <img src="snimki/tsvetnica/изяви/11.JPG" alt="Изява 9">
+                        <img src="snimki/tsvetnica/изяви/13.JPG" alt="Изява 10">
+                        <img src="snimki/tsvetnica/изяви/14.JPG" alt="Изява 11">
+                        <img src="snimki/tsvetnica/изяви/16.jpg" alt="Изява 12">
+                        <img src="snimki/tsvetnica/изяви/17.jpg" alt="Изява 13">
+                        <img src="snimki/tsvetnica/изяви/18.jpeg" alt="Изява 14">
+                        <img src="snimki/tsvetnica/изяви/19.jpeg" alt="Изява 15">
+                    </div>
+                    <button class="slider-btn next" onclick="slide(this,1)">&#8250;</button>
+                </div>
+                <div class="slider-dots"></div>
             </div>
-            <div class="gallery-item">
-                <p>👗 Традиционни шопски носии</p>
+
+            <div class="slider-card" data-slider>
+                <div class="slider-card-title">Пътувания</div>
+                <div class="slider-track-wrapper">
+                    <button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
+                    <div class="slider-track">
+                        <img src="snimki/tsvetnica/пътувания/IMG_3808.JPEG" alt="Пътуване 1">
+                        <img src="snimki/tsvetnica/пътувания/IMG_3857.JPG" alt="Пътуване 2">
+                        <img src="snimki/tsvetnica/пътувания/IMG_6073.jpeg" alt="Пътуване 3">
+                        <img src="snimki/tsvetnica/пътувания/20231022_215804.JPG" alt="Пътуване 4">
+                        <img src="snimki/tsvetnica/пътувания/IMG_20231022_111406.JPG" alt="Пътуване 5">
+                    </div>
+                    <button class="slider-btn next" onclick="slide(this,1)">&#8250;</button>
+                </div>
+                <div class="slider-dots"></div>
             </div>
-            <div class="gallery-item">
-                <p>🎪 Фестивал в София</p>
+
+            <div class="slider-card" data-slider>
+                <div class="slider-card-title">Репетиции</div>
+                <div class="slider-track-wrapper">
+                    <button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
+                    <div class="slider-track">
+                        <img src="snimki/tsvetnica/репетиции/1111.jpeg" alt="Репетиция 1">
+                        <img src="snimki/tsvetnica/репетиции/IMG_3861.JPEG" alt="Репетиция 2">
+                        <img src="snimki/tsvetnica/репетиции/IMG_3968.JPG" alt="Репетиция 3">
+                        <img src="snimki/tsvetnica/репетиции/IMG_5592.JPG" alt="Репетиция 4">
+                        <img src="snimki/tsvetnica/репетиции/IMG_5991.JPEG" alt="Репетиция 5">
+                        <img src="snimki/tsvetnica/репетиции/IMG_6019.JPEG" alt="Репетиция 6">
+                        <img src="snimki/tsvetnica/репетиции/IMG_6469.jpeg" alt="Репетиция 7">
+                        <img src="snimki/tsvetnica/репетиции/IMG_93081.JPEG" alt="Репетиция 8">
+                    </div>
+                    <button class="slider-btn next" onclick="slide(this,1)">&#8250;</button>
+                </div>
+                <div class="slider-dots"></div>
             </div>
-            <div class="gallery-item">
-                <p>💃 Ръченица на сцена</p>
-            </div>
-            <div class="gallery-item">
-                <p>🌸 Пролетен празник</p>
-            </div>
-            <div class="gallery-item">
-                <p>🎉 Юбилеен концерт</p>
-            </div>
+
         </div>
     </section>
 
@@ -600,6 +680,41 @@
             document.querySelector('.hamburger').classList.remove('active');
             document.querySelector('.nav-links').classList.remove('active');
         });
+
+        // Gallery sliders
+        document.querySelectorAll('.slider-card').forEach(card => {
+            const track = card.querySelector('.slider-track');
+            const dotsContainer = card.querySelector('.slider-dots');
+            const items = track.children;
+            card._current = 0;
+
+            Array.from(items).forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+                dot.addEventListener('click', () => goTo(i));
+                dotsContainer.appendChild(dot);
+            });
+
+            function goTo(index) {
+                card._current = (index + items.length) % items.length;
+                track.style.transition = 'transform 0.4s ease';
+                track.style.transform = `translateX(-${card._current * 100}%)`;
+                dotsContainer.querySelectorAll('.slider-dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === card._current);
+                });
+            }
+
+            card._goTo = goTo;
+            if (items.length <= 1) {
+                card.querySelectorAll('.slider-btn').forEach(b => b.style.display = 'none');
+            }
+        });
+
+        function slide(btn, dir) {
+            const card = btn.closest('.slider-card');
+            const total = card.querySelector('.slider-track').children.length;
+            card._goTo((card._current + dir + total) % total);
+        }
 
         // Timeline toggle
         function toggleYear(headerEl) {
