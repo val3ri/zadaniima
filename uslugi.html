@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="bg">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Услуги - За да ни има</title>
     <link rel="stylesheet" href="css/shared.css">
     <style>
-
         /* Service Section */
         .service-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 30px;
             align-items: center;
             margin-top: 40px;
         }
@@ -30,6 +30,8 @@
         .service-text ul {
             margin-top: 20px;
             margin-left: 25px;
+            columns: 2;
+            column-gap: 40px;
         }
 
         .service-text li {
@@ -63,15 +65,22 @@
             background: white;
             padding: 35px;
             border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             border-top: 5px solid #007A58;
             transition: all 0.3s;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card .cta-button {
+            margin-top: auto;
+            align-self: center;
         }
 
         .pricing-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
 
         .pricing-card h3 {
@@ -111,7 +120,7 @@
             display: inline-block;
             margin-top: 20px;
             padding: 12px 30px;
-            background: linear-gradient(135deg, #007A58, #D62612);
+            background: #b51f0e;
             color: white;
             text-decoration: none;
             border-radius: 25px;
@@ -121,6 +130,88 @@
 
         .cta-button:hover {
             transform: scale(1.05);
+        }
+
+        /* Slider */
+        .slider-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+            background: #f5f5f5;
+        }
+
+        .slider-track-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider-track {
+            display: flex;
+        }
+
+        .slider-track img {
+            min-width: 100%;
+            width: 100%;
+            display: block;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.85);
+            border: none;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            font-size: 1rem;
+            cursor: pointer;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            transition: background 0.2s;
+        }
+
+        .slider-btn:hover { background: white; }
+        .slider-btn.prev { left: 8px; }
+        .slider-btn.next { right: 8px; }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px;
+            background: white;
+        }
+
+        .slider-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .slider-dot.active { background: #D62612; }
+
+        /* Fotosesia slider — portrait photos, constrained width, contain to avoid crop */
+        .slider-fotosesia {
+            max-width: 400px;
+        }
+
+        .slider-fotosesia .slider-track img {
+            height: 550px;
+            object-fit: contain;
+            background: #f5f5f5;
+        }
+
+        /* Za prazdnik slider — landscape photos, full column width, cover */
+        .slider-praznik .slider-track img {
+            height: 380px;
+            object-fit: cover;
         }
 
         /* Gallery Section */
@@ -135,18 +226,18 @@
         .galeria-grid img {
             max-width: 100%;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
         }
 
         /* Contact Info Box */
         .contact-box {
-            background: linear-gradient(135deg, #007A58, #D62612);
+            background: #007A58;
             color: white;
             padding: 50px;
             border-radius: 15px;
             text-align: center;
             margin-top: 60px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .contact-box h3 {
@@ -238,6 +329,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation Header -->
     <nav>
@@ -265,6 +357,7 @@
                         <a href="fts-tsvetnica.html#repertoar">Репертоар</a>
                         <a href="fts-tsvetnica.html#postijenia">Изяви</a>
                         <a href="fts-tsvetnica.html#galeria">Галерия</a>
+                        <a href="fts-tsvetnica.html#contact">Контакти</a>
                     </div>
                 </li>
                 <li class="has-dropdown" onclick="toggleDropdownMenu(this, event)">
@@ -274,14 +367,15 @@
                         <a href="ts-pasarelci.html#repertoar">Репертоар</a>
                         <a href="ts-pasarelci.html#postijenia">Изяви</a>
                         <a href="ts-pasarelci.html#galeria">Галерия</a>
+                        <a href="ts-pasarelci.html#contact">Контакти</a>
                     </div>
                 </li>
                 <li class="has-dropdown" onclick="toggleDropdownMenu(this, event)">
                     <a href="uslugi.html">Услуги</a>
                     <div class="dropdown-menu">
+                        <a href="uslugi.html#za-prazdnik">За Вашия Празник</a>
                         <a href="uslugi.html#naem-kostumi">Наем на Костюми</a>
                         <a href="uslugi.html#fotosesia">Фотосесия</a>
-                        <a href="uslugi.html#za-prazdnik">За Вашия Празник</a>
                         <a href="uslugi.html#contact">Контакти</a>
                     </div>
                 </li>
@@ -299,165 +393,14 @@
         <div class="scroll-indicator">↓</div>
     </section>
 
-    <!-- Costume Rental Section -->
-    <section id="naem-kostumi">
-        <h2>Наем на Костюми</h2>
-        <div class="service-content">
-            <div class="service-text">
-                <h3>Автентични Български Народни Носии</h3>
-                <p>
-                    Нашата колекция от традиционни български носии е на ваше разположение за наем. Всеки костюм е автентичен, грижливо поддържан и представлява истинско съкровище на българската традиция.
-                </p>
-                <p style="margin-top: 20px;">
-                    <strong>Перфектни за:</strong>
-                </p>
-                <ul>
-                    <li>Фолклорни фестивали и изпълнения</li>
-                    <li>Сватби в традиционен стил</li>
-                    <li>Фотосесии и видеозаснемания</li>
-                    <li>Театрални постановки</li>
-                    <li>Културни събития и празници</li>
-                    <li>Учебни проекти и представления</li>
-                </ul>
-                <p style="margin-top: 20px;">
-                    Разполагаме с костюми от всички етнографски области на България - Тракия, Шопско, Пиринско, Добруджа, Родопи и други. Всеки костюм включва всички необходими елементи - носия, аксесоари, накити и обувки.
-                </p>
-            </div>
-            <div class="service-image">
-                <p>👗 Богата колекция от автентични български носии</p>
-            </div>
-        </div>
-
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <h3>Еднодневен Наем</h3>
-                <div class="price">50 лв</div>
-                <ul>
-                    <li>Пълен комплект носия</li>
-                    <li>Всички аксесоари включени</li>
-                    <li>Професионална консултация</li>
-                    <li>Помощ при облечено</li>
-                </ul>
-                <a href="#contact" class="cta-button">Запитване</a>
-            </div>
-
-            <div class="pricing-card">
-                <h3>Уикенд Наем</h3>
-                <div class="price">120 лв</div>
-                <ul>
-                    <li>Пълен комплект носия</li>
-                    <li>3 дни (петък-неделя)</li>
-                    <li>Всички аксесоари</li>
-                    <li>Безплатна подмяна при нужда</li>
-                </ul>
-                <a href="#contact" class="cta-button">Запитване</a>
-            </div>
-
-            <div class="pricing-card">
-                <h3>Седмичен Наем</h3>
-                <div class="price">200 лв</div>
-                <ul>
-                    <li>Пълен комплект носия</li>
-                    <li>7 дни наем</li>
-                    <li>Всички аксесоари</li>
-                    <li>Приоритетен избор</li>
-                </ul>
-                <a href="#contact" class="cta-button">Запитване</a>
-            </div>
-
-            <div class="pricing-card">
-                <h3>Групов Наем</h3>
-                <div class="price">От 40 лв</div>
-                <ul>
-                    <li>Отстъпка за 5+ костюма</li>
-                    <li>Координирани комплекти</li>
-                    <li>Всички аксесоари</li>
-                    <li>Транспорт при нужда</li>
-                </ul>
-                <a href="#contact" class="cta-button">Запитване</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Photography Section -->
-    <section id="fotosesia">
-        <h2>Професионална Фотосесия</h2>
-        <div class="service-content">
-            <div class="service-image">
-                <p>📸 Професионални снимки в традиционни носии</p>
-            </div>
-            <div class="service-text">
-                <h3>Запечатайте Българската Традиция</h3>
-                <p>
-                    Предлагаме професионални фотосесии в автентични български народни носии. Нашите фотографи са специализирани в заснемане на традиционни костюми и знаят как да подчертаят красотата и уникалността на всяка носия.
-                </p>
-                <p style="margin-top: 20px;">
-                    <strong>Какво включва:</strong>
-                </p>
-                <ul>
-                    <li>Професионален фотограф с опит в фолклорна фотография</li>
-                    <li>Избор на носия от нашата колекция</li>
-                    <li>Професионален грим и прическа (по желание)</li>
-                    <li>Избор на локация - студио или на открито</li>
-                    <li>Минимум 50 обработени снимки в дигитален формат</li>
-                    <li>Авторски права върху снимките</li>
-                </ul>
-                <p style="margin-top: 20px;">
-                    Перфектно за семейни снимки, портрети, сватбени фотосесии, детски фотографии или просто за да запазите спомен от българската традиция.
-                </p>
-            </div>
-        </div>
-
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <h3>Основен Пакет</h3>
-                <div class="price">250 лв</div>
-                <ul>
-                    <li>1 час фотосесия</li>
-                    <li>1 носия по избор</li>
-                    <li>50+ обработени снимки</li>
-                    <li>Студийна локация</li>
-                </ul>
-                <a href="#contact" class="cta-button">Запитване</a>
-            </div>
-
-            <div class="pricing-card">
-                <h3>Премиум Пакет</h3>
-                <div class="price">450 лв</div>
-                <ul>
-                    <li>2 часа фотосесия</li>
-                    <li>2 носии по избор</li>
-                    <li>100+ обработени снимки</li>
-                    <li>Локация по избор</li>
-                    <li>Грим и прическа включени</li>
-                </ul>
-                <a href="#contact" class="cta-button">Запитване</a>
-            </div>
-
-            <div class="pricing-card">
-                <h3>Семеен Пакет</h3>
-                <div class="price">600 лв</div>
-                <ul>
-                    <li>3 часа фотосесия</li>
-                    <li>Носии за цялото семейство</li>
-                    <li>150+ обработени снимки</li>
-                    <li>Локация по избор</li>
-                    <li>Грим и прически включени</li>
-                    <li>Фотоалбум в подарък</li>
-                </ul>
-                <a href="#contact" class="cta-button">Запитване</a>
-            </div>
-        </div>
-    </section>
-
     <!-- Event Services Section -->
     <section id="za-prazdnik">
         <h2>За Вашия Празник</h2>
         <div class="service-content">
             <div class="service-text">
-                <h3>Организиране на Традиционни Празници</h3>
                 <p>
-                    Направете вашия празник незабравим с помощта на нашите услуги за организиране на събития в традиционен български стил. Независимо дали е сватба, рожден ден, фирмен празник или културно събитие - ние ще внесем духа на българската традиция.
+                    Направете вашия празник незабравим с помощта на нашите услуги Независимо дали е сватба, рожден ден,
+                    фирмен празник или културно събитие - ние ще внесем духа на българската традиция.
                 </p>
                 <p style="margin-top: 20px;">
                     <strong>Какво предлагаме:</strong>
@@ -468,26 +411,36 @@
                     <li>Традиционни български обреди (сватбени, кръщелни и др.)</li>
                     <li>Костюми за гостите</li>
                     <li>Обучение на гости в народни танци</li>
-                    <li>Декорация в традиционен стил</li>
-                    <li>Организиране на традиционно хоро</li>
-                    <li>Фолклорен аниматор за детски партита</li>
                 </ul>
-                <p style="margin-top: 20px;">
-                    Нашият опитен екип ще се погрижи всеки детайл да бъде перфектен и да създадем атмосфера, която гостите ви никога няма да забравят.
-                </p>
             </div>
-            <div class="service-image">
-                <p>🎉 Незабравими празници в традиционен стил</p>
+            <div class="slider-card slider-praznik" data-slider>
+                <div class="slider-track-wrapper">
+                    <button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
+                    <div class="slider-track">
+                        <img src="snimki/uslugi/za-praznik-snimki/IMG_0739.JPEG" alt="За празник 1">
+                        <img src="snimki/uslugi/za-praznik-snimki/IMG_0873.JPG" alt="За празник 2">
+                        <img src="snimki/uslugi/za-praznik-snimki/IMG_2579.JPEG" alt="За празник 3">
+                        <img src="snimki/uslugi/za-praznik-snimki/IMG_3359.JPEG" alt="За празник 4">
+                        <img src="snimki/uslugi/za-praznik-snimki/IMG_3635.JPEG" alt="За празник 5">
+                        <img src="snimki/uslugi/za-praznik-snimki/IMG_4798.JPEG" alt="За празник 6">
+                        <img src="snimki/uslugi/za-praznik-snimki/IMG_4885.JPEG" alt="За празник 7">
+                        <img src="snimki/uslugi/za-praznik-snimki/IMG_5159.JPEG" alt="За празник 8">
+                        <img src="snimki/uslugi/za-praznik-snimki/IMG_6738.JPEG" alt="За празник 9">
+                        <img src="snimki/uslugi/za-praznik-snimki/P_M-1074.JPG" alt="За празник 10">
+                    </div>
+                    <button class="slider-btn next" onclick="slide(this,1)">&#8250;</button>
+                </div>
+                <div class="slider-dots"></div>
             </div>
         </div>
 
         <div class="pricing-grid">
             <div class="pricing-card">
-                <h3>Мини Пакет</h3>
-                <div class="price">400 лв</div>
+                <h3>Основен Пакет</h3>
+                <div class="price">200 евро</div>
                 <ul>
-                    <li>30 минути фолклорно изпълнение</li>
-                    <li>Танцов състав (6-8 души)</li>
+                    <li>15 минути фолклорна програма</li>
+                    <li>Танцов състав (2-4 души)</li>
                     <li>Традиционни носии</li>
                     <li>Записана музика</li>
                 </ul>
@@ -495,29 +448,14 @@
             </div>
 
             <div class="pricing-card">
-                <h3>Стандартен Пакет</h3>
-                <div class="price">800 лв</div>
-                <ul>
-                    <li>1 час фолклорна програма</li>
-                    <li>Танцов състав (10-12 души)</li>
-                    <li>Музиканти на живо</li>
-                    <li>Обучение на гости в хоро</li>
-                    <li>Традиционни носии</li>
-                </ul>
-                <a href="#contact" class="cta-button">Запитване</a>
-            </div>
-
-            <div class="pricing-card">
-                <h3>VIP Пакет</h3>
+                <h3>Премиум Пакет</h3>
                 <div class="price">1500 лв</div>
                 <ul>
-                    <li>2 часа фолклорна програма</li>
-                    <li>Два танцови състава</li>
-                    <li>Музиканти на живо</li>
-                    <li>Обучение и водене на хоро</li>
-                    <li>Традиционен обред</li>
-                    <li>Костюми за гостите</li>
-                    <li>Декорация</li>
+                    <li>30 минути фолклорна програма</li>
+                    <li>Танцов състав (4-6 души)</li>
+                    <li>Традиционни носии</li>
+                    <li>Ритуал</li>
+                    <li>Хоро с гостите</li>
                 </ul>
                 <a href="#contact" class="cta-button">Запитване</a>
             </div>
@@ -527,10 +465,161 @@
                 <div class="price">По договаряне</div>
                 <ul>
                     <li>Напълно персонализиран празник</li>
-                    <li>Всички услуги по ваш избор</li>
-                    <li>Неограничено време</li>
+                    <li>Услуги по ваш избор</li>
+                    <li>Времетраене по ваш избор</li>
                     <li>Специални изисквания</li>
-                    <li>Пълна организация</li>
+                </ul>
+                <a href="#contact" class="cta-button">Запитване</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Costume Rental Section -->
+    <section id="naem-kostumi">
+        <h2>Наем на Костюми</h2>
+        <div class="service-text">
+            <p>
+                Костюмите от Колекцията "За да ни има" са грижливо поддържани и представляват истинско съкровище на
+                българската традиция. Те се отдават под наем, за да бъдат част от вашия специален момент.
+            </p>
+            <p style="margin-top: 20px;">
+                <strong>Подходящи за:</strong>
+            </p>
+            <ul>
+                <li>Фолклорни фестивали и изпълнения</li>
+                <li>Сватби в традиционен стил</li>
+                <li>Фотосесии и видеозаснемания</li>
+                <li>Театрални постановки</li>
+                <li>Културни събития и празници</li>
+                <li>Учебни проекти и представления</li>
+            </ul>
+            <p style="margin-top: 20px;">
+                Колекцията разполага с костюми от всички етнографски области на България. Наемът на костюм включва
+                всички необходими елементи - носия, аксесоари, накити и обувки.
+            </p>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Еднодневен Наем</h3>
+                <div class="price">35 евро</div>
+                <ul>
+                    <li>24 часа</li>
+                    <li>Костюм</li>
+                    <li>Всички необходими аксесоари</li>
+                    <li>Консултация и помощ при обличането</li>
+                </ul>
+                <a href="#contact" class="cta-button">Запитване</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Уикенд Наем</h3>
+                <div class="price">85 евро</div>
+                <ul>
+                    <li>3 дни (петък-неделя)</li>
+                    <li>Костюм</li>
+                    <li>Всички необходими аксесоари</li>
+                    <li>Консултация и помощ при обличането</li>
+                </ul>
+                <a href="#contact" class="cta-button">Запитване</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Групов Наем</h3>
+                <div class="price">От 30 евро</div>
+                <ul>
+                    <li>Отстъпка за 5+ костюма</li>
+                    <li>Координирани комплекти</li>
+                    <li>Всички необходими аксесоари</li>
+                    <li>Транспорт при нужда</li>
+                </ul>
+                <a href="#contact" class="cta-button">Запитване</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Photography Section -->
+    <section id="fotosesia">
+        <h2>Професионална Фотосесия</h2>
+        <div class="service-content">
+            <div class="slider-card slider-fotosesia" data-slider>
+                <div class="slider-track-wrapper">
+                    <button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
+                    <div class="slider-track">
+                        <img src="snimki/uslugi/fotosesia-snimki/1024-1535 (4).jpg" alt="Фотосесия 1">
+                        <img src="snimki/uslugi/fotosesia-snimki/1024-1535 (5).jpg" alt="Фотосесия 2">
+                        <img src="snimki/uslugi/fotosesia-snimki/1024-1536 - 2024-03-29T230451.998.jpg" alt="Фотосесия 3">
+                        <img src="snimki/uslugi/fotosesia-snimki/1024-1536 - 2024-03-29T232558.950.jpg" alt="Фотосесия 4">
+                        <img src="snimki/uslugi/fotosesia-snimki/VSS-102.jpg" alt="Фотосесия 5">
+                        <img src="snimki/uslugi/fotosesia-snimki/VSS-137.jpg" alt="Фотосесия 6">
+                    </div>
+                    <button class="slider-btn next" onclick="slide(this,1)">&#8250;</button>
+                </div>
+                <div class="slider-dots"></div>
+            </div>
+            <div class="service-text">
+                <h3>Запечатайте Българската Традиция</h3>
+                <p>
+                    Предлагаме Ви професионална фотосесия в български народни носии. Нашите фотографи са с богат опит в
+                    заснемането на традиционни костюми и знаят как да подчертаят красотата и уникалността им.
+                </p>
+                <p style="margin-top: 20px;">
+                    <strong>Какво включва:</strong>
+                </p>
+                <ul>
+                    <li>Фотограф с опит във фолклорна фотография</li>
+                    <li>Избор на носия от нашата колекция</li>
+                    <li>Избор на локация - студио или на открито</li>
+                    <li>До 50 обработени кадъра в дигитален формат</li>
+                    <li>Авторски права върху снимките</li>
+                </ul>
+                <p style="margin-top: 20px;">
+                    Подходящо за:
+                    <ul>
+                        <li>семейни снимки</li>
+                        <li>портрети</li>
+                        <li>сватбени фотосесии</li>
+                        <li>детски фотографии </li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Основен Пакет</h3>
+                <div class="price">115 евро</div>
+                <ul>
+                    <li>1 час фотосесия</li>
+                    <li>1 костюм по избор</li>
+                    <li>30+ обработени снимки</li>
+                    <li>Студийна локация</li>
+                </ul>
+                <a href="#contact" class="cta-button">Запитване</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Премиум Пакет</h3>
+                <div class="price">195 евро</div>
+                <ul>
+                    <li>2 часа фотосесия</li>
+                    <li>2 костюма по избор</li>
+                    <li>60+ обработени снимки</li>
+                    <li>Локация по избор</li>
+                </ul>
+                <a href="#contact" class="cta-button">Запитване</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Семеен Пакет</h3>
+                <div class="price">310 лв</div>
+                <ul>
+                    <li>2.5 часа фотосесия</li>
+                    <li>Костюми за цялото семейство</li>
+                    <li>до 100 обработени снимки</li>
+                    <li>Локация по избор</li>
+                    <li>Подарък фотоалбум</li>
                 </ul>
                 <a href="#contact" class="cta-button">Запитване</a>
             </div>
@@ -545,14 +634,7 @@
                 <strong>📧 Email:</strong> услуги@zadаnimi.bg
             </p>
             <p>
-                <strong>📱 Телефон:</strong> +359 888 123 456
-            </p>
-            <p>
-                <strong>📍 Адрес:</strong> ул. "Цар Борис III" 45, София, България
-            </p>
-            <p style="margin-top: 30px;">
-                Работно време: Понеделник - Петък, 10:00 - 18:00<br>
-                Събота: 10:00 - 14:00
+                <strong>📱 Телефони:</strong> +359 885 276 652, +359 883 373 622 
             </p>
             <p style="margin-top: 20px;">
                 За запитвания и резервации, моля свържете се с нас по телефона или email.<br>
@@ -568,6 +650,41 @@
     </footer>
 
     <script>
+        // Gallery sliders
+        document.querySelectorAll('.slider-card').forEach(card => {
+            const track = card.querySelector('.slider-track');
+            const dotsContainer = card.querySelector('.slider-dots');
+            const items = track.children;
+            card._current = 0;
+
+            Array.from(items).forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+                dot.addEventListener('click', () => goTo(i));
+                dotsContainer.appendChild(dot);
+            });
+
+            function goTo(index) {
+                card._current = (index + items.length) % items.length;
+                track.style.transition = 'transform 0.4s ease';
+                track.style.transform = `translateX(-${card._current * 100}%)`;
+                dotsContainer.querySelectorAll('.slider-dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === card._current);
+                });
+            }
+
+            card._goTo = goTo;
+            if (items.length <= 1) {
+                card.querySelectorAll('.slider-btn').forEach(b => b.style.display = 'none');
+            }
+        });
+
+        function slide(btn, dir) {
+            const card = btn.closest('.slider-card');
+            const total = card.querySelector('.slider-track').children.length;
+            card._goTo((card._current + dir + total) % total);
+        }
+
         // Hamburger menu toggle
         function toggleMenu() {
             document.querySelector('.hamburger').classList.toggle('active');
@@ -619,4 +736,5 @@
         });
     </script>
 </body>
+
 </html>
