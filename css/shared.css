@@ -61,6 +61,7 @@ nav {
     text-decoration: none;
     color: #333;
     font-weight: 500;
+    font-family: 'Balkara', Georgia, serif;
     transition: color 0.3s;
     position: relative;
 }
@@ -76,7 +77,7 @@ nav {
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #007A58, #D62612);
+    background: #007A58;
     transition: width 0.3s;
 }
 
@@ -214,6 +215,7 @@ nav {
 .hero h1 {
     font-size: 6rem;
     font-weight: bold;
+    font-family: 'Balkara', Georgia, serif;
     text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
     margin-bottom: 20px;
     letter-spacing: 8px;
@@ -263,6 +265,7 @@ h2 {
     text-align: center;
     position: relative;
     padding-bottom: 15px;
+    font-family: 'Balkara', Georgia, serif;
 }
 
 h2::after {
@@ -273,7 +276,7 @@ h2::after {
     transform: translateX(-50%);
     width: 100px;
     height: 4px;
-    background: linear-gradient(90deg, #007A58, #D62612);
+    background: #007A58;
 }
 
 /* Footer */

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="bg">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,7 +63,7 @@
             max-height: 380px;
             width: auto;
             margin-bottom: 60px;
-            filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.4));
+            filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.4));
             animation: fadeInUp 1s ease-out;
         }
 
@@ -70,20 +71,21 @@
         .intro-text {
             max-width: 820px;
             margin: 0 auto 50px;
-            font-family: 'Balkara', Georgia, serif;
+            font-family: 'Georgia', serif;
             font-size: 0.9rem;
             line-height: 1.8;
             color: #1a1a1a;
             background: rgba(255, 255, 255, 0.85);
             padding: 30px 40px;
             border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
             text-align: left;
         }
 
         .intro-text em {
             color: #007A58;
             font-style: italic;
+            font-family: 'Balkara', Georgia, serif;
         }
 
         @media (max-width: 768px) {
@@ -120,7 +122,7 @@
             text-decoration: none;
             color: #333;
             transition: all 0.3s;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             border: 3px solid transparent;
             position: relative;
             overflow: hidden;
@@ -133,7 +135,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.5s;
         }
 
@@ -143,8 +145,8 @@
 
         .nav-button:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-            border-color: #D62612;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: #007A58;
         }
 
         .nav-button h2 {
@@ -158,12 +160,12 @@
             font-size: 0.9rem;
             color: #555;
             line-height: 1.5;
-            font-family: 'Balkara', Georgia, serif;
+            font-family: 'Georgia', serif;
         }
 
         /* Special styling for each button */
         .nav-button:nth-child(1) {
-            border-top: 5px solid #D62612;
+            border-top: 5px solid #007A58;
         }
 
         .nav-button:nth-child(2) {
@@ -171,7 +173,7 @@
         }
 
         .nav-button:nth-child(3) {
-            border-top: 5px solid #D62612;
+            border-top: 5px solid #007A58;
         }
 
         .nav-button:nth-child(4) {
@@ -241,6 +243,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -252,18 +255,37 @@
             animation-fill-mode: backwards;
         }
 
-        .nav-button:nth-child(1) { animation-delay: 0.1s; }
-        .nav-button:nth-child(2) { animation-delay: 0.2s; }
-        .nav-button:nth-child(3) { animation-delay: 0.3s; }
-        .nav-button:nth-child(4) { animation-delay: 0.4s; }
+        .nav-button:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .nav-button:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .nav-button:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .nav-button:nth-child(4) {
+            animation-delay: 0.4s;
+        }
     </style>
 </head>
+
 <body>
     <div class="main-container">
         <div class="content">
             <img src="snimki/LOGO_FINAL.png" alt="За да ни има" class="main-logo">
 
-            <p class="intro-text">Целта на Сдружение "За да ни има" е да обедини в себе си отделните елементи, свързани с фолклора ни и хората, които се грижат за това те да се предават през поколенията.<br><br>В основата стои Колекцията от народни носии на семейство Низамски. Последователно към Сдружението се включват Танцов състав "Пасарелци", като пазители на автентичните български хора, традиции и обичаи и Танцов състав "Цветница", които представят фолклора на сценично ниво.<br><br><em>...Миналото да се съхрани в настоящето и да се предаде на идните поколения...</em></p>
+            <p class="intro-text">Целта на Сдружение "За да ни има" е да обедини в себе си отделните елементи, свързани
+                с фолклора ни и хората, които се грижат за това те да се предават през поколенията.<br><br>В основата
+                стои Колекцията от народни носии на семейство Низамски. Последователно към Сдружението се включват
+                Танцов състав "Пасарелци", като пазители на автентичните български хора, традиции и обичаи и Танцов
+                състав "Цветница", които представят фолклора на сценично ниво.
+                <br><br>
+                <em>...Миналото да се съхрани в настоящето и да се предаде на идните поколения...</em>
+            </p>
 
             <div class="nav-buttons">
                 <a href="kolekcia.html" class="nav-button">
@@ -273,20 +295,21 @@
 
                 <a href="fts-tsvetnica.html" class="nav-button">
                     <h2>ФТС Цветница</h2>
-                    <p>Фолклорно танцов състав с богата история и традиции</p>
+                    <p>Фолклорно танцов състав</p>
                 </a>
 
                 <a href="ts-pasarelci.html" class="nav-button">
                     <h2>ТС Пасарелци</h2>
-                    <p>Танцов състав, запазващ автентичността на българските народни танци</p>
+                    <p>Танцов състав, пазещ българските традиции</p>
                 </a>
 
                 <a href="uslugi.html" class="nav-button">
                     <h2>Услуги</h2>
-                    <p>Наем на костюми, фотосесии и организиране на празници</p>
+                    <p>За вашия празник, наем на костюми, фотосесия</p>
                 </a>
             </div>
         </div>
     </div>
 </body>
+
 </html>
