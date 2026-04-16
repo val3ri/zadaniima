@@ -32,37 +32,14 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #0a0a0a 0%, #007A58 50%, #D62612 100%);
+            background: linear-gradient(135deg, #001f14 0%, #004d38 40%, #007A58 70%, #003d2b 100%);
             position: relative;
             padding: 20px;
         }
 
-        .main-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23111111" width="1200" height="800"/><circle fill="%23007A58" opacity="0.55" cx="200" cy="400" r="300"/><circle fill="%23D62612" opacity="0.4" cx="1000" cy="300" r="400"/></svg>');
-            background-size: cover;
-            filter: blur(8px);
-            opacity: 0.85;
-        }
-
-        .main-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.35);
-        }
-
         .content {
             position: relative;
-            z-index: 3;
+            z-index: 2;
             text-align: center;
             padding: 20px;
             width: 100%;
@@ -96,6 +73,8 @@
             color: #007A58;
             font-style: italic;
             font-family: 'Balkara', Georgia, serif;
+            display: block;
+            text-align: center;
         }
 
         @media (max-width: 768px) {
@@ -300,22 +279,26 @@
             <div class="nav-buttons">
                 <a href="kolekcia.html" class="nav-button">
                     <h2>Колекция</h2>
-                    <p>Открийте нашата уникална колекция от традиционни български носии и костюми</p>
+                    <p>Традиционни български носии и костюми</p>
                 </a>
 
                 <a href="fts-tsvetnica.html" class="nav-button">
                     <h2>ФТС Цветница</h2>
-                    <p>Фолклорно танцов състав</p>
+                    <p>Фолклорен танцов състав</p>
                 </a>
 
                 <a href="ts-pasarelci.html" class="nav-button">
                     <h2>ТС Пасарелци</h2>
-                    <p>Танцов състав, пазещ българските традиции</p>
+                    <p>Пазители на българските традиции</p>
                 </a>
 
                 <a href="uslugi.html" class="nav-button">
                     <h2>Услуги</h2>
-                    <p>За вашия празник, наем на костюми, фотосесия</p>
+                    <p>
+                        За вашия празник <br>
+                        Наем на костюми <br>
+                        Фотосесия
+                    </p>
                 </a>
             </div>
         </div>
