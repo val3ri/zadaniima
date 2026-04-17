@@ -86,16 +86,7 @@ nav {
 }
 
 .home-button {
-    background: linear-gradient(135deg, #007A58, #D62612);
-    color: white !important;
-    padding: 8px 20px;
-    border-radius: 20px;
     font-weight: bold;
-}
-
-.home-button:hover {
-    color: white !important;
-    transform: scale(1.05);
 }
 
 .home-button::after {
