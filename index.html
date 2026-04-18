@@ -48,11 +48,18 @@
 
         /* Logo */
         .main-logo {
-            max-height: 380px;
+            max-height: 520px;
             width: auto;
             margin-bottom: 60px;
-            filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.4));
             animation: fadeInUp 1s ease-out;
+            -webkit-mask-image:
+                linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%),
+                linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+            -webkit-mask-composite: destination-in;
+            mask-image:
+                linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%),
+                linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+            mask-composite: intersect;
         }
 
         /* Intro text */
@@ -266,7 +273,7 @@
 <body>
     <div class="main-container">
         <div class="content">
-            <img src="snimki/LOGO_FINAL.png" alt="За да ни има" class="main-logo">
+            <img src="snimki/LOGO_FINAL_crop.png" alt="За да ни има" class="main-logo">
 
             <p class="intro-text">Целта на Сдружение "За да ни има" е да обедини в себе си отделните елементи, свързани
                 с фолклора ни и хората, които се грижат за това те да се предават през поколенията.<br><br>В основата
@@ -274,7 +281,7 @@
                 Танцов състав "Пасарелци", като пазители на автентичните български хора, традиции и обичаи и Танцов
                 състав "Цветница", които представят фолклора на сценично ниво.
                 <br><br>
-                <em>...Миналото да се съхрани в настоящето и да се предаде на идните поколения...</em>
+                <em style="color: #D62612;">...Миналото да се съхрани в настоящето и да се предаде на идните поколения...</em>
             </p>
 
             <div class="nav-buttons">
